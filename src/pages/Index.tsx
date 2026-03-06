@@ -9,6 +9,11 @@ import promoMini from "@/assets/promo-mini.jpg";
 import promoPequeno from "@/assets/promo-pequeno.jpg";
 import promoMedio from "@/assets/promo-medio.jpg";
 import promoGrande from "@/assets/promo-grande.jpg";
+import rosas1 from "@/assets/rosas-1.jpg";
+import rosas2 from "@/assets/rosas-2.jpg";
+import rosas3 from "@/assets/rosas-3.jpg";
+import rosas4 from "@/assets/rosas-4.jpg";
+import rosas5 from "@/assets/rosas-5.jpg";
 
 const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
 
@@ -52,6 +57,9 @@ const Index = () => {
 
       {/* Promoção Dia da Mulher Carousel */}
       <PromoCarousel />
+
+      {/* Nossas Rosas Carousel */}
+      <RosasCarousel />
 
       {/* Featured Bouquets */}
       <section className="py-20 bg-background">
@@ -240,6 +248,78 @@ const PromoCarousel = () => {
                   </div>
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const rosasImages = [
+  { img: rosas1, alt: "Rosas cor-de-rosa e vermelhas" },
+  { img: rosas2, alt: "Rosas vermelhas elegantes" },
+  { img: rosas3, alt: "Rosas rosa delicadas" },
+  { img: rosas4, alt: "Rosas brancas e creme" },
+  { img: rosas5, alt: "Mix de rosas coloridas" },
+];
+
+const RosasCarousel = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.querySelector("div")?.offsetWidth ?? 300;
+    scrollRef.current.scrollBy({ left: direction === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
+  };
+
+  return (
+    <section className="py-20 bg-purple-light">
+      <div className="container mx-auto px-4">
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-purple mb-4">
+          Nossas Rosas 🌹
+        </h2>
+        <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
+          Descubra a beleza e a delicadeza das nossas rosas selecionadas com carinho.
+        </p>
+
+        <div className="relative max-w-5xl mx-auto">
+          <button
+            onClick={() => scroll("left")}
+            className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-purple/20 shadow-md items-center justify-center text-purple hover:bg-purple/10 transition-colors"
+            aria-label="Anterior"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-purple/20 shadow-md items-center justify-center text-purple hover:bg-purple/10 transition-colors"
+            aria-label="Próximo"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          <div
+            ref={scrollRef}
+            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+          >
+            {rosasImages.map((item) => (
+              <div
+                key={item.alt}
+                className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(33.333%-14px)]"
+              >
+                <div className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-purple/10">
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.alt}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
