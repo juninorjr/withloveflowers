@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
-import { Heart, Truck, Flower2, Star } from "lucide-react";
+import { useRef } from "react";
+import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import heroImage from "@/assets/hero-flowers.jpg";
 import bouquetMini from "@/assets/bouquet-mini.jpg";
 import bouquetMedio from "@/assets/bouquet-medio.jpg";
 import bouquetGrande from "@/assets/bouquet-grande.jpg";
+import promoMini from "@/assets/promo-mini.jpg";
+import promoPequeno from "@/assets/promo-pequeno.jpg";
+import promoMedio from "@/assets/promo-medio.jpg";
+import promoGrande from "@/assets/promo-grande.jpg";
 
 const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
 
@@ -44,6 +49,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Promoção Dia da Mulher Carousel */}
+      <PromoCarousel />
 
       {/* Featured Bouquets */}
       <section className="py-20 bg-background">
@@ -159,6 +167,84 @@ const Index = () => {
         </div>
       </section>
     </main>
+  );
+};
+
+const promoProducts = [
+  { img: promoMini, name: "Buquê Mini de Rosas", price: "R$50" },
+  { img: promoPequeno, name: "Buquê Pequeno de Rosas", price: "R$90" },
+  { img: promoMedio, name: "Buquê Médio de Rosas", price: "R$200" },
+  { img: promoGrande, name: "Buquê Grande de Rosas", price: "R$415" },
+];
+
+const PromoCarousel = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.querySelector("div")?.offsetWidth ?? 300;
+    scrollRef.current.scrollBy({ left: direction === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
+  };
+
+  return (
+    <section className="py-20 bg-rose-light">
+      <div className="container mx-auto px-4">
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
+          Promoção Dia da Mulher 🌸
+        </h2>
+        <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
+          Surpreenda com buquês de rosas fresquinhas. Escolha o tamanho ideal!
+        </p>
+
+        <div className="relative max-w-5xl mx-auto">
+          {/* Navigation arrows - desktop */}
+          <button
+            onClick={() => scroll("left")}
+            className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+            aria-label="Anterior"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+            aria-label="Próximo"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          {/* Carousel */}
+          <div
+            ref={scrollRef}
+            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+          >
+            {promoProducts.map((item) => (
+              <Link
+                to="/catalogo"
+                key={item.name}
+                className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(25%-15px)] group"
+              >
+                <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border">
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4 text-center">
+                    <h3 className="font-display text-lg font-semibold text-foreground">{item.name}</h3>
+                    <p className="text-primary font-bold font-body text-xl mt-1">{item.price}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
