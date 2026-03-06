@@ -9,6 +9,11 @@ import promoMini from "@/assets/promo-mini.jpg";
 import promoPequeno from "@/assets/promo-pequeno.jpg";
 import promoMedio from "@/assets/promo-medio.jpg";
 import promoGrande from "@/assets/promo-grande.jpg";
+import rosas1 from "@/assets/rosas-1.jpg";
+import rosas2 from "@/assets/rosas-2.jpg";
+import rosas3 from "@/assets/rosas-3.jpg";
+import rosas4 from "@/assets/rosas-4.jpg";
+import rosas5 from "@/assets/rosas-5.jpg";
 
 const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
 
@@ -52,6 +57,9 @@ const Index = () => {
 
       {/* Promoção Dia da Mulher Carousel */}
       <PromoCarousel />
+
+      {/* Nossas Rosas Carousel */}
+      <RosasCarousel />
 
       {/* Featured Bouquets */}
       <section className="py-20 bg-background">
