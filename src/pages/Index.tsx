@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import bouquetMini from "@/assets/bouquet-mini.jpg";
 import bouquetMedio from "@/assets/bouquet-medio.jpg";
