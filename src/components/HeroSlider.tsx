@@ -35,12 +35,12 @@ const HeroSlider = () => {
   const prev = useCallback(() => setCurrent((p) => (p - 1 + slides.length) % slides.length), []);
 
   useEffect(() => {
-    const id = setInterval(next, 3000);
+    const id = setInterval(next, 6000);
     return () => clearInterval(id);
   }, [next]);
 
   return (
-    <section className="relative w-full h-[300px] sm:h-[400px] md:h-[480px] mt-16 overflow-hidden">
+    <section className="relative w-full h-[280px] sm:h-[380px] md:h-[460px] mt-20 overflow-hidden">
       {/* Slides */}
       {slides.map((slide, i) => (
         <div
