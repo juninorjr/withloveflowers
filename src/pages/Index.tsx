@@ -12,11 +12,11 @@ import produto7 from "@/assets/produto-7.jpg";
 import produto8 from "@/assets/produto-8.jpg";
 import produto9 from "@/assets/produto-9.jpg";
 import produto10 from "@/assets/produto-10.webp";
-import rosas1 from "@/assets/rosas-1.jpg";
-import rosas2 from "@/assets/rosas-2.jpg";
-import rosas3 from "@/assets/rosas-3.jpg";
-import rosas4 from "@/assets/rosas-4.jpg";
-import rosas5 from "@/assets/rosas-5.jpg";
+import produto11 from "@/assets/produto-11.jpg";
+import produto12 from "@/assets/produto-12.jpg";
+import produto13 from "@/assets/produto-13.jpg";
+import produto14 from "@/assets/produto-14.jpg";
+import produto15 from "@/assets/produto-15.jpg";
 import HeroSlider from "@/components/HeroSlider";
 
 const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
