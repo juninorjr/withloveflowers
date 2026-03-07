@@ -175,7 +175,7 @@ const PromoCarousel = () => {
     <section className="py-20 bg-rose-light">
       <div className="container mx-auto px-4">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-          Promoção Dia da Mulher 🌸
+          Dia da Mulher 🌸
         </h2>
         <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
           Surpreenda com buquês de rosas fresquinhas. Escolha o tamanho ideal!
