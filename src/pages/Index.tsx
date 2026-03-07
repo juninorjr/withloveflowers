@@ -90,39 +90,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Delivery Info */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Informações de Entrega</h2>
-          <p className="text-muted-foreground font-body mb-8">
-            Entregamos flores na região de Jaguariúna com carinho e pontualidade.
-          </p>
-          <div className="bg-card rounded-lg p-8 shadow-sm border border-border">
-            <div className="grid sm:grid-cols-2 gap-4 text-left font-body text-sm">
-              <div className="flex justify-between border-b border-border pb-2">
-                <span className="text-foreground font-semibold">Jaguariúna</span>
-                <span className="text-primary font-bold">R$15</span>
-              </div>
-              <div className="flex justify-between border-b border-border pb-2">
-                <span className="text-foreground font-semibold">Holambra</span>
-                <span className="text-primary font-bold">R$25</span>
-              </div>
-              <div className="flex justify-between border-b border-border pb-2">
-                <span className="text-foreground font-semibold">Santo Antônio da Posse</span>
-                <span className="text-primary font-bold">R$25</span>
-              </div>
-              <div className="flex justify-between border-b border-border pb-2">
-                <span className="text-foreground font-semibold">Outras localidades</span>
-                <span className="text-muted-foreground">Sob consulta</span>
-              </div>
-            </div>
-            <Link to="/entrega" className="inline-block mt-6 text-primary font-body font-bold text-sm hover:underline">
-              Ver mais detalhes →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-20 bg-rose-light">
         <div className="container mx-auto px-4 text-center max-w-2xl">
