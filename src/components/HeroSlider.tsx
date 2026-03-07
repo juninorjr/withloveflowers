@@ -18,24 +18,17 @@ const HeroSlider = () => {
   }, [next]);
 
   return (
-    <section
-      className="relative w-full mt-20 overflow-hidden bg-background"
-      style={{ height: "clamp(220px, 40vw, 480px)", padding: "12px 16px" }}
-    >
+    <section className="relative w-full mt-20 overflow-hidden" style={{ aspectRatio: "16/9" }}>
       {slides.map((img, i) => (
         <div
           key={i}
-          className="absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out"
-          style={{
-            opacity: i === current ? 1 : 0,
-            zIndex: i === current ? 1 : 0,
-            padding: "12px 16px",
-          }}
+          className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+          style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
         >
           <img
             src={img}
             alt={`Slide ${i + 1}`}
-            className="max-w-full max-h-full object-contain object-center"
+            className="w-full h-full object-cover object-center"
           />
         </div>
       ))}
