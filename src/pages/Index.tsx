@@ -213,9 +213,9 @@ const PromoCarousel = () => {
           <div ref={emblaRef} className="overflow-hidden">
             <div className="flex">
               {promoProducts.map((item) => (
-                <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2">
-                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "#F8F0FF" }}>
-                    <div className="aspect-square overflow-hidden">
+                <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-full">
+                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
+                    <div className="aspect-[4/5] w-full overflow-hidden">
                       <img
                         src={item.img}
                         alt={item.name}
@@ -223,7 +223,7 @@ const PromoCarousel = () => {
                         loading="lazy"
                       />
                     </div>
-                    <div className="p-4 text-center">
+                    <div className="p-4 text-center flex flex-col flex-grow justify-between">
                       <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
                       <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
                     </div>
