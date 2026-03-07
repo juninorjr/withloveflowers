@@ -19,8 +19,8 @@ const Footer = () => (
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start gap-2 hover:text-primary transition-colors">
               <Heart size={16} /> WhatsApp
             </a>
-            <a href="https://instagram.com/withlove" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start gap-2 hover:text-primary transition-colors">
-              <Instagram size={16} /> @withlove
+            <a href="https://instagram.com/_withloveflowers" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start gap-2 hover:text-primary transition-colors">
+              <Instagram size={16} /> @_withloveflowers
             </a>
           </div>
         </div>
