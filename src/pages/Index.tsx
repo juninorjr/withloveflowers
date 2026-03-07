@@ -234,6 +234,10 @@ const PromoCarousel = () => {
           </div>
         </div>
       </div>
+
+      <p className="text-center font-body text-muted-foreground text-sm md:text-base italic mt-8 px-4">
+        Personalize seu buquê com a quantidade de rosas e girassóis que desejar, criando um arranjo único e especial.
+      </p>
     </section>
   );
 };
