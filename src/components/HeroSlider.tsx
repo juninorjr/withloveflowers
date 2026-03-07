@@ -18,7 +18,7 @@ const HeroSlider = () => {
   }, [next]);
 
   return (
-    <section className="relative w-full mt-20 overflow-hidden" style={{ aspectRatio: "16/9" }}>
+    <section className="relative w-full mt-20 overflow-hidden h-[55vh] md:h-[70vh]">
       {slides.map((img, i) => (
         <div
           key={i}
