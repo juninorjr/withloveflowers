@@ -186,51 +186,51 @@ const PromoCarousel = () => {
 
   return (
     <section className="py-20 bg-rose-light">
-      <div className="container mx-auto px-4">
+      <div className="px-4 md:container md:mx-auto">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
           Dia da Mulher 🌸
         </h2>
         <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
           Surpreenda com buquês de rosas fresquinhas. Escolha o tamanho ideal!
         </p>
+      </div>
 
-        <div className="relative max-w-5xl mx-auto px-12">
-          <button
-            onClick={scrollPrev}
-            className="flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
-            aria-label="Anterior"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
-            aria-label="Próximo"
-          >
-            <ChevronRight size={20} />
-          </button>
+      <div className="relative px-0 md:px-12 max-w-5xl md:mx-auto">
+        <button
+          onClick={scrollPrev}
+          className="flex absolute left-2 md:left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-card/90 border border-border shadow-lg items-center justify-center text-foreground hover:bg-secondary transition-colors"
+          aria-label="Anterior"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button
+          onClick={scrollNext}
+          className="flex absolute right-2 md:right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-card/90 border border-border shadow-lg items-center justify-center text-foreground hover:bg-secondary transition-colors"
+          aria-label="Próximo"
+        >
+          <ChevronRight size={20} />
+        </button>
 
-          <div ref={emblaRef} className="overflow-hidden">
-            <div className="flex items-stretch">
-              {promoProducts.map((item) => (
-                <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
-                    <div className="aspect-[4/5] w-full overflow-hidden">
-                      <img
-                        src={item.img}
-                        alt={item.name}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-4 text-center flex-1 flex flex-col justify-between min-h-[120px]">
-                      <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
-                      <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
-                    </div>
+        <div ref={emblaRef} className="overflow-hidden">
+          <div className="flex items-stretch">
+            {promoProducts.map((item) => (
+              <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
+                <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
+                  <div className="aspect-[4/5] w-full overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4 text-center flex-1 flex flex-col justify-between min-h-[120px]">
+                    <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
+                    <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
