@@ -25,10 +25,16 @@ const HeroSlider = () => {
           className="absolute inset-0 transition-opacity duration-700 ease-in-out"
           style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
         >
-          <img
-            src={img}
-            alt={`Slide ${i + 1}`}
-            className="w-full h-full object-cover"
+          <div
+            className="w-full h-full bg-secondary"
+            style={{
+              backgroundImage: `url(${img})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+            role="img"
+            aria-label={`Slide ${i + 1}`}
           />
         </div>
       ))}
