@@ -30,7 +30,7 @@ const Index = () => {
           <h2 className="font-display text-xl md:text-2xl font-semibold text-center text-foreground mb-6">
             O que você procura hoje?
           </h2>
-          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide justify-start md:justify-center">
+          <div className="flex gap-3 overflow-x-auto no-scrollbar pb-2 justify-start md:justify-center">
             {["Todos", "Buquês", "Rosas", "Presentes", "Cestas"].map((cat) => (
               <button
                 key={cat}
