@@ -37,21 +37,21 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
   }, [emblaApi]);
 
   return (
-    <div className="relative max-w-6xl mx-auto">
+    <div className="relative max-w-6xl mx-auto px-12 md:px-14">
       {/* Arrows */}
       <button
         onClick={scrollPrev}
-        className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+        className="absolute left-0 top-[calc(50%-40px)] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 border border-border shadow-md flex items-center justify-center text-foreground hover:bg-secondary transition-colors"
         aria-label="Anterior"
       >
-        <ChevronLeft size={20} />
+        <ChevronLeft size={22} />
       </button>
       <button
         onClick={scrollNext}
-        className="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+        className="absolute right-0 top-[calc(50%-40px)] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 border border-border shadow-md flex items-center justify-center text-foreground hover:bg-secondary transition-colors"
         aria-label="Próximo"
       >
-        <ChevronRight size={20} />
+        <ChevronRight size={22} />
       </button>
 
       {/* Carousel */}
