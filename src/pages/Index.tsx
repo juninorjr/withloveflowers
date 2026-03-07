@@ -32,7 +32,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Promoção Dia da Mulher Carousel */}
+      {/* Dia da Mulher Carousel */}
       <PromoCarousel />
 
       {/* Nossas Rosas Carousel */}
@@ -80,8 +80,16 @@ const Index = () => {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {[
-              { icon: Flower2, title: "Flores Frescas", desc: "Selecionadas diariamente para garantir qualidade e beleza." },
-              { icon: Heart, title: "Feito com Amor", desc: "Cada buquê é montado com carinho e atenção aos detalhes." },
+              {
+                icon: Flower2,
+                title: "Flores Frescas",
+                desc: "Selecionadas diariamente para garantir qualidade e beleza.",
+              },
+              {
+                icon: Heart,
+                title: "Feito com Amor",
+                desc: "Cada buquê é montado com carinho e atenção aos detalhes.",
+              },
               { icon: Truck, title: "Entrega Rápida", desc: "Entregamos em Jaguariúna e região com pontualidade." },
               { icon: Star, title: "Personalização", desc: "Monte seu buquê escolhendo a quantidade de flores." },
             ].map((item) => (
@@ -100,9 +108,7 @@ const Index = () => {
       {/* Delivery Info */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 max-w-3xl text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Informações de Entrega
-          </h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Informações de Entrega</h2>
           <p className="text-muted-foreground font-body mb-8">
             Entregamos flores na região de Jaguariúna com carinho e pontualidade.
           </p>
@@ -135,9 +141,7 @@ const Index = () => {
       {/* CTA */}
       <section className="py-20 bg-rose-light">
         <div className="container mx-auto px-4 text-center max-w-2xl">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Pronta para surpreender?
-          </h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Pronta para surpreender?</h2>
           <p className="text-muted-foreground font-body mb-8">
             Faça seu pedido pelo WhatsApp e receba flores frescas com entrega rápida.
           </p>
@@ -253,9 +257,7 @@ const RosasCarousel = () => {
   return (
     <section className="py-20 bg-purple-light">
       <div className="container mx-auto px-4">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-purple mb-4">
-          Nossas Rosas 🌹
-        </h2>
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-purple mb-4">Nossas Rosas 🌹</h2>
         <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
           Descubra a beleza e a delicadeza das nossas rosas selecionadas com carinho.
         </p>
@@ -282,10 +284,7 @@ const RosasCarousel = () => {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
           >
             {rosasImages.map((item) => (
-              <div
-                key={item.alt}
-                className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(33.333%-14px)]"
-              >
+              <div key={item.alt} className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(33.333%-14px)]">
                 <div className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-purple/10">
                   <div className="aspect-square overflow-hidden">
                     <img
