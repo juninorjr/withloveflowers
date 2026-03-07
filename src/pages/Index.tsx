@@ -27,12 +27,29 @@ const Index = () => {
       {/* Hero Slider */}
       <HeroSlider />
 
-      {/* Category Buttons Placeholder */}
-      <section className="py-12 bg-background">
+      {/* Categories & Welcome */}
+      <section className="py-10 md:py-12 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="flex items-center justify-center gap-4 min-h-[60px] rounded-lg border border-dashed border-border text-muted-foreground font-body text-sm">
-            Espaço reservado para categorias
+          <h2 className="font-display text-xl md:text-2xl font-semibold text-center text-foreground mb-6">
+            O que você procura hoje?
+          </h2>
+          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide justify-start md:justify-center">
+            {["Todos", "Buquês", "Rosas", "Presentes", "Cestas"].map((cat) => (
+              <button
+                key={cat}
+                className="flex-shrink-0 px-6 py-2.5 rounded-full font-body text-sm font-medium transition-colors"
+                style={{ backgroundColor: "#F8F0FF", color: "#a04ba0" }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#EDE0F5")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#F8F0FF")}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
+          <p className="flex items-center justify-center gap-1.5 text-muted-foreground font-body text-xs md:text-sm mt-6">
+            <Flower2 size={14} className="text-primary" />
+            Entregando amor em Jaguariúna e região
+          </p>
         </div>
       </section>
 
