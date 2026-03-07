@@ -160,10 +160,10 @@ const Index = () => {
 };
 
 const promoProducts = [
-  { img: promoMini, name: "Buquê Mini de Rosas", price: "R$50" },
-  { img: promoPequeno, name: "Buquê Pequeno de Rosas", price: "R$90" },
-  { img: promoMedio, name: "Buquê Médio de Rosas", price: "R$200" },
-  { img: promoGrande, name: "Buquê Grande de Rosas", price: "R$415" },
+  { img: 10, name: "Buquê Mini de Rosas", price: "R$50" },
+  { img: 9, name: "Buquê Pequeno de Rosas", price: "R$90" },
+  { img: 8, name: "Buquê Médio de Rosas", price: "R$200" },
+  { img: 7, name: "Buquê Grande de Rosas", price: "R$415" },
 ];
 
 const PromoCarousel = () => {
