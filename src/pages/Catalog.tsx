@@ -7,17 +7,24 @@ import bouquetMini from "@/assets/bouquet-mini.jpg";
 import bouquetMedio from "@/assets/bouquet-medio.jpg";
 import bouquetGrande from "@/assets/bouquet-grande.jpg";
 import lirio from "@/assets/lirio.jpg";
+import produto4 from "@/assets/produto-4.jpg";
+import produto5 from "@/assets/produto-5.jpg";
+import produto6 from "@/assets/produto-6.jpg";
+import produto7 from "@/assets/produto-7.jpg";
+import produto8 from "@/assets/produto-8.jpg";
+import produto9 from "@/assets/produto-9.jpg";
+import produto10 from "@/assets/produto-10.webp";
 
 const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
 
 const carouselProducts = [
-  { img: girassol, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$ 65,00" },
-  { img: rosaColombiana, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "A partir de R$ 100,00" },
-  { img: rosaSolitaria, name: "Buquê de Rosas Vermelhas e Margaridas", price: "A partir de R$ 150,00" },
-  { img: bouquetGrande, name: "Buquê Grande de Girassóis, Rosas e Flores do Campo", price: "A partir de R$ 415,00" },
-  { img: bouquetMedio, name: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis", price: "A partir de R$ 200,00" },
-  { img: lirio, name: "Buquê Pequeno de Lírios Brancos e Margaridas Pink", price: "A partir de R$ 90,00" },
-  { img: bouquetMini, name: "Minibuquê de Girassol e Crisântemos Coloridos", price: "A partir de R$ 50,00" },
+  { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$ 65,00" },
+  { img: produto5, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "A partir de R$ 100,00" },
+  { img: produto6, name: "Buquê de Rosas Vermelhas e Margaridas", price: "A partir de R$ 150,00" },
+  { img: produto7, name: "Buquê Grande de Girassóis, Rosas e Flores do Campo", price: "A partir de R$ 415,00" },
+  { img: produto8, name: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis", price: "A partir de R$ 200,00" },
+  { img: produto9, name: "Buquê Pequeno de Lírios Brancos e Margaridas Pink", price: "A partir de R$ 90,00" },
+  { img: produto10, name: "Minibuquê de Girassol e Crisântemos Coloridos", price: "A partir de R$ 50,00" },
 ];
 
 const Catalog = () => {
