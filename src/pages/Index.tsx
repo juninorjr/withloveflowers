@@ -2,9 +2,6 @@ import { Link } from "react-router-dom";
 import { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import bouquetMini from "@/assets/bouquet-mini.jpg";
-import bouquetMedio from "@/assets/bouquet-medio.jpg";
-import bouquetGrande from "@/assets/bouquet-grande.jpg";
 import produto4 from "@/assets/produto-4.jpg";
 import produto5 from "@/assets/produto-5.jpg";
 import produto6 from "@/assets/produto-6.jpg";
@@ -59,39 +56,6 @@ const Index = () => {
       {/* Nossas Rosas Carousel */}
       <RosasCarousel />
 
-      {/* Featured Bouquets */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-            Buquês em Destaque
-          </h2>
-          <p className="text-center text-muted-foreground font-body mb-12 max-w-lg mx-auto">
-            Composições feitas com carinho para tornar cada momento especial.
-          </p>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {[
-              { img: bouquetMini, name: "Mini", price: "R$50" },
-              { img: bouquetMedio, name: "Médio", price: "R$200" },
-              { img: bouquetGrande, name: "Grande", price: "R$415" },
-            ].map((item) => (
-              <Link to="/catalogo" key={item.name} className="group">
-                <div className="aspect-square rounded-lg overflow-hidden shadow-sm border border-border">
-                  <img
-                    src={item.img}
-                    alt={`Buquê ${item.name}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="text-center mt-4">
-                  <h3 className="font-display text-xl font-semibold text-foreground">{item.name}</h3>
-                  <p className="text-primary font-bold font-body mt-1">{item.price}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Why Buy From Us */}
       <section className="py-20 bg-secondary">
