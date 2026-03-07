@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import heroImage from "@/assets/hero-flowers.jpg";
 import bouquetMini from "@/assets/bouquet-mini.jpg";
 import bouquetMedio from "@/assets/bouquet-medio.jpg";
 import bouquetGrande from "@/assets/bouquet-grande.jpg";
@@ -13,15 +14,46 @@ import rosas2 from "@/assets/rosas-2.jpg";
 import rosas3 from "@/assets/rosas-3.jpg";
 import rosas4 from "@/assets/rosas-4.jpg";
 import rosas5 from "@/assets/rosas-5.jpg";
-import HeroCarousel from "@/components/HeroCarousel";
 
 const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
 
 const Index = () => {
   return (
     <main>
-      {/* Hero Carousel */}
-      <HeroCarousel />
+      {/* Hero */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={heroImage} alt="Flores elegantes" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/30" />
+        </div>
+        <div className="relative z-10 text-center px-4 max-w-3xl">
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight animate-fade-up">
+            WithLove
+          </h1>
+          <p className="font-display text-xl md:text-2xl text-primary-foreground/90 mt-4 italic animate-fade-up-delay-1">
+            Flores que transformam momentos em lembranças.
+          </p>
+          <p className="font-body text-primary-foreground/80 mt-3 text-base md:text-lg animate-fade-up-delay-2">
+            Catálogo especial para presentear quem você ama.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-bold text-sm tracking-wide hover:opacity-90 transition-opacity"
+            >
+              Fazer pedido no WhatsApp
+            </a>
+            <Link
+              to="/catalogo"
+              className="border-2 border-primary-foreground/60 text-primary-foreground px-8 py-4 rounded-full font-body font-bold text-sm tracking-wide hover:bg-primary-foreground/10 transition-colors"
+            >
+              Ver Catálogo
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Promoção Dia da Mulher Carousel */}
       <PromoCarousel />
