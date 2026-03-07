@@ -23,6 +23,15 @@ const Index = () => {
       {/* Hero Slider */}
       <HeroSlider />
 
+      {/* Category Buttons Placeholder */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="flex items-center justify-center gap-4 min-h-[60px] rounded-lg border border-dashed border-border text-muted-foreground font-body text-sm">
+            Espaço reservado para categorias
+          </div>
+        </div>
+      </section>
+
       {/* Promoção Dia da Mulher Carousel */}
       <PromoCarousel />
 
