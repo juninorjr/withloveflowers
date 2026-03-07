@@ -1,4 +1,5 @@
 import { Heart, Instagram, MapPin } from "lucide-react";
+import logo from "@/assets/logo-2.png";
 
 const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
 
@@ -7,7 +8,7 @@ const Footer = () => (
     <div className="container mx-auto px-4">
       <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
         <div>
-          <h3 className="font-display text-2xl font-bold text-primary mb-3">WithLove</h3>
+          <img src={logo} alt="With Love, Flowers" className="w-48 md:w-56 h-auto object-contain mx-auto mb-6" />
           <p className="text-muted-foreground font-body text-sm leading-relaxed">
             Flores que transformam momentos em lembranças. Presenteie quem você ama com carinho e elegância.
           </p>
