@@ -4,10 +4,13 @@ import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight } from "lucide-r
 import bouquetMini from "@/assets/bouquet-mini.jpg";
 import bouquetMedio from "@/assets/bouquet-medio.jpg";
 import bouquetGrande from "@/assets/bouquet-grande.jpg";
-import promoMini from "@/assets/promo-mini.jpg";
-import promoPequeno from "@/assets/promo-pequeno.jpg";
-import promoMedio from "@/assets/promo-medio.jpg";
-import promoGrande from "@/assets/promo-grande.jpg";
+import produto4 from "@/assets/produto-4.jpg";
+import produto5 from "@/assets/produto-5.jpg";
+import produto6 from "@/assets/produto-6.jpg";
+import produto7 from "@/assets/produto-7.jpg";
+import produto8 from "@/assets/produto-8.jpg";
+import produto9 from "@/assets/produto-9.jpg";
+import produto10 from "@/assets/produto-10.webp";
 import rosas1 from "@/assets/rosas-1.jpg";
 import rosas2 from "@/assets/rosas-2.jpg";
 import rosas3 from "@/assets/rosas-3.jpg";
@@ -160,10 +163,13 @@ const Index = () => {
 };
 
 const promoProducts = [
-  { img: promoMini, name: "Buquê Mini de Rosas", price: "R$50" },
-  { img: promoPequeno, name: "Buquê Pequeno de Rosas", price: "R$90" },
-  { img: promoMedio, name: "Buquê Médio de Rosas", price: "R$200" },
-  { img: promoGrande, name: "Buquê Grande de Rosas", price: "R$415" },
+  { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "Valores a partir de R$ 65,00" },
+  { img: produto5, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "Valores a partir de R$ 100,00" },
+  { img: produto6, name: "Buquê de Rosas Vermelhas e Margaridas", price: "Valores a partir de R$ 150,00" },
+  { img: produto7, name: "Buquê Grande de Girassóis, Rosas e Flores do Campo", price: "Valores a partir de R$ 415,00" },
+  { img: produto8, name: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis", price: "Valores a partir de R$ 200,00" },
+  { img: produto9, name: "Buquê Pequeno de Lírios Brancos e Margaridas Pink", price: "Valores a partir de R$ 90,00" },
+  { img: produto10, name: "Minibuquê de Girassol e Crisântemos Coloridos", price: "Valores a partir de R$ 50,00" },
 ];
 
 const PromoCarousel = () => {
@@ -212,20 +218,20 @@ const PromoCarousel = () => {
               <Link
                 to="/catalogo"
                 key={item.name}
-                className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(25%-15px)] group"
+                className="snap-start shrink-0 w-[85vw] sm:w-[55vw] md:w-[calc(25%-15px)] group"
               >
                 <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border">
-                  <div className="aspect-square overflow-hidden">
+                  <div className="aspect-square overflow-hidden bg-white flex items-center justify-center">
                     <img
                       src={item.img}
                       alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
                   </div>
                   <div className="p-4 text-center">
-                    <h3 className="font-display text-lg font-semibold text-foreground">{item.name}</h3>
-                    <p className="text-primary font-bold font-body text-xl mt-1">{item.price}</p>
+                    <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
+                    <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
                   </div>
                 </div>
               </Link>
