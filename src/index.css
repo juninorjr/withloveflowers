@@ -6,7 +6,8 @@
 
 @layer base {
   :root {
-    --background: 30 30% 98%;
+    --background: 0 0% 100%;
+    --background-end: 300 40% 97%;
     --foreground: 20 20% 20%;
 
     --card: 0 0% 100%;
@@ -65,8 +66,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: var(--font-body);
+    background: linear-gradient(to bottom, hsl(0 0% 100%), hsl(300 40% 97%));
+    background-attachment: fixed;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
