@@ -163,13 +163,13 @@ const Index = () => {
 };
 
 const promoProducts = [
-  { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "Valores a partir de R$ 65,00" },
-  { img: produto5, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "Valores a partir de R$ 100,00" },
-  { img: produto6, name: "Buquê de Rosas Vermelhas e Margaridas", price: "Valores a partir de R$ 150,00" },
-  { img: produto7, name: "Buquê Grande de Girassóis, Rosas e Flores do Campo", price: "Valores a partir de R$ 415,00" },
-  { img: produto8, name: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis", price: "Valores a partir de R$ 200,00" },
-  { img: produto9, name: "Buquê Pequeno de Lírios Brancos e Margaridas Pink", price: "Valores a partir de R$ 90,00" },
-  { img: produto10, name: "Minibuquê de Girassol e Crisântemos Coloridos", price: "Valores a partir de R$ 50,00" },
+  { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$65,00" },
+  { img: produto5, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "A partir de R$100,00" },
+  { img: produto6, name: "Buquê de Rosas Vermelhas e Margaridas", price: "A partir de R$150,00" },
+  { img: produto7, name: "Buquê Grande de Girassóis, Rosas e Flores do Campo", price: "A partir de R$415,00" },
+  { img: produto8, name: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis", price: "A partir de R$200,00" },
+  { img: produto9, name: "Buquê Pequeno de Lírios Brancos e Margaridas Pink", price: "A partir de R$90,00" },
+  { img: produto10, name: "Minibuquê de Girassol e Crisântemos Coloridos", price: "A partir de R$50,00" },
 ];
 
 const PromoCarousel = () => {
@@ -191,40 +191,35 @@ const PromoCarousel = () => {
           Surpreenda com buquês de rosas fresquinhas. Escolha o tamanho ideal!
         </p>
 
-        <div className="relative max-w-5xl mx-auto px-10 md:px-0">
+        <div className="relative max-w-5xl mx-auto">
           <button
             onClick={() => scroll("left")}
-            className="flex absolute -left-1 md:-left-5 top-[40%] -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+            className="flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
             aria-label="Anterior"
           >
-            <ChevronLeft size={22} />
+            <ChevronLeft size={20} />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="flex absolute -right-1 md:-right-5 top-[40%] -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+            className="flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
             aria-label="Próximo"
           >
-            <ChevronRight size={22} />
+            <ChevronRight size={20} />
           </button>
 
-          {/* Carousel */}
           <div
             ref={scrollRef}
             className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
           >
             {promoProducts.map((item) => (
-              <Link
-                to="/catalogo"
-                key={item.name}
-                className="snap-start shrink-0 w-[85vw] sm:w-[55vw] md:w-[calc(25%-15px)] group"
-              >
-                <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border">
+              <div key={item.name} className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(33.333%-14px)]">
+                <div className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-border">
                   <div className="aspect-square overflow-hidden bg-white flex items-center justify-center">
                     <img
                       src={item.img}
                       alt={item.name}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
                   </div>
@@ -233,7 +228,7 @@ const PromoCarousel = () => {
                     <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
