@@ -238,62 +238,68 @@ const PromoCarousel = () => {
   );
 };
 
-const rosasImages = [
-  { img: rosas1, alt: "Rosas cor-de-rosa e vermelhas" },
-  { img: rosas2, alt: "Rosas vermelhas elegantes" },
-  { img: rosas3, alt: "Rosas rosa delicadas" },
-  { img: rosas4, alt: "Rosas brancas e creme" },
-  { img: rosas5, alt: "Mix de rosas coloridas" },
+const presentesProducts = [
+  { img: produto11, name: "Luminária da Paixão Vermelha", price: "R$ 95,00" },
+  { img: produto12, name: "Luminária da Paixão Branca", price: "R$ 95,00" },
+  { img: produto13, name: "Coração Gourmet com Ferrero Rocher", price: "R$ 120,00" },
+  { img: produto14, name: "Box Branca - Rosas e Gaveta de Bombons", price: "R$ 100,00" },
+  { img: produto15, name: "Box Black Personalizada com Foto, Rosas e Ferrero Rocher", price: "R$ 120,00" },
 ];
 
 const RosasCarousel = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    slidesToScroll: 1,
+    dragFree: false,
+  });
 
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.querySelector("div")?.offsetWidth ?? 300;
-    scrollRef.current.scrollBy({ left: direction === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
-  };
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <section className="py-20 bg-purple-light">
-      <div className="container mx-auto px-4">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-purple mb-4">Nossas Rosas 🌹</h2>
+      <div className="px-4 md:container md:mx-auto">
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
+          Presentes Inesquecíveis ✨
+        </h2>
         <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
-          Descubra a beleza e a delicadeza das nossas rosas selecionadas com carinho.
+          Surpreenda quem você ama com presentes únicos e cheios de carinho.
         </p>
+      </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          <button
-            onClick={() => scroll("left")}
-            className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-purple/20 shadow-md items-center justify-center text-purple hover:bg-purple/10 transition-colors"
-            aria-label="Anterior"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-purple/20 shadow-md items-center justify-center text-purple hover:bg-purple/10 transition-colors"
-            aria-label="Próximo"
-          >
-            <ChevronRight size={20} />
-          </button>
+      <div className="relative px-0 md:px-12 max-w-5xl md:mx-auto">
+        <button
+          onClick={scrollPrev}
+          className="flex absolute left-2 md:left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-card/90 border border-border shadow-lg items-center justify-center text-foreground hover:bg-secondary transition-colors"
+          aria-label="Anterior"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button
+          onClick={scrollNext}
+          className="flex absolute right-2 md:right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-card/90 border border-border shadow-lg items-center justify-center text-foreground hover:bg-secondary transition-colors"
+          aria-label="Próximo"
+        >
+          <ChevronRight size={20} />
+        </button>
 
-          <div
-            ref={scrollRef}
-            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
-          >
-            {rosasImages.map((item) => (
-              <div key={item.alt} className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(33.333%-14px)]">
-                <div className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-purple/10">
-                  <div className="aspect-square overflow-hidden">
+        <div ref={emblaRef} className="overflow-hidden">
+          <div className="flex items-stretch">
+            {presentesProducts.map((item) => (
+              <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
+                <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
+                  <div className="aspect-[4/5] w-full overflow-hidden">
                     <img
                       src={item.img}
-                      alt={item.alt}
+                      alt={item.name}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
+                  </div>
+                  <div className="p-4 text-center flex-1 flex flex-col justify-between min-h-[120px]">
+                    <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
+                    <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
                   </div>
                 </div>
               </div>
