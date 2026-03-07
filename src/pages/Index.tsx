@@ -214,12 +214,12 @@ const PromoCarousel = () => {
           >
             {promoProducts.map((item) => (
               <div key={item.name} className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(33.333%-14px)]">
-                <div className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-border">
-                  <div className="aspect-square overflow-hidden bg-white flex items-center justify-center">
+                <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "#F8F0FF" }}>
+                  <div className="aspect-square overflow-hidden">
                     <img
                       src={item.img}
                       alt={item.name}
-                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
                   </div>
