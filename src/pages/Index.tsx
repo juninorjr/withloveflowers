@@ -173,13 +173,15 @@ const promoProducts = [
 ];
 
 const PromoCarousel = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    slidesToScroll: 1,
+    dragFree: false,
+  });
 
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.querySelector("div")?.offsetWidth ?? 300;
-    scrollRef.current.scrollBy({ left: direction === "left" ? -cardWidth : cardWidth, behavior: "smooth" });
-  };
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <section className="py-20 bg-rose-light">
@@ -191,45 +193,43 @@ const PromoCarousel = () => {
           Surpreenda com buquês de rosas fresquinhas. Escolha o tamanho ideal!
         </p>
 
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-5xl mx-auto px-12">
           <button
-            onClick={() => scroll("left")}
-            className="flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+            onClick={scrollPrev}
+            className="flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
             aria-label="Anterior"
           >
             <ChevronLeft size={20} />
           </button>
           <button
-            onClick={() => scroll("right")}
-            className="flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+            onClick={scrollNext}
+            className="flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
             aria-label="Próximo"
           >
             <ChevronRight size={20} />
           </button>
 
-          <div
-            ref={scrollRef}
-            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
-          >
-            {promoProducts.map((item) => (
-              <div key={item.name} className="snap-start shrink-0 w-[75vw] sm:w-[55vw] md:w-[calc(33.333%-14px)]">
-                <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "#F8F0FF" }}>
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-4 text-center">
-                    <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
-                    <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
+          <div ref={emblaRef} className="overflow-hidden">
+            <div className="flex">
+              {promoProducts.map((item) => (
+                <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2">
+                  <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "#F8F0FF" }}>
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={item.img}
+                        alt={item.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-4 text-center">
+                      <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
+                      <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
