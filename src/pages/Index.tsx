@@ -191,21 +191,20 @@ const PromoCarousel = () => {
           Surpreenda com buquês de rosas fresquinhas. Escolha o tamanho ideal!
         </p>
 
-        <div className="relative max-w-5xl mx-auto">
-          {/* Navigation arrows - desktop */}
+        <div className="relative max-w-5xl mx-auto px-10 md:px-0">
           <button
             onClick={() => scroll("left")}
-            className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+            className="flex absolute -left-1 md:-left-5 top-[40%] -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
             aria-label="Anterior"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={22} />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-card border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
+            className="flex absolute -right-1 md:-right-5 top-[40%] -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 border border-border shadow-md items-center justify-center text-foreground hover:bg-secondary transition-colors"
             aria-label="Próximo"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={22} />
           </button>
 
           {/* Carousel */}
