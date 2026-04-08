@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
+import { useCart, cartItemId } from "@/contexts/CartContext";
 import produto4 from "@/assets/produto-4.jpg";
 import produto5 from "@/assets/produto-5.jpg";
 import produto6 from "@/assets/produto-6.jpg";
@@ -163,20 +164,7 @@ const PromoCarousel = () => {
           <div className="flex items-stretch">
             {promoProducts.map((item) => (
               <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
-                  <div className="aspect-[4/5] w-full overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-4 text-center flex-1 flex flex-col justify-between min-h-[120px]">
-                    <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
-                    <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
-                  </div>
-                </div>
+                <CarouselCard img={item.img} name={item.name} price={item.price} />
               </div>
             ))}
           </div>
@@ -240,26 +228,41 @@ const RosasCarousel = () => {
           <div className="flex items-stretch">
             {presentesProducts.map((item) => (
               <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
-                  <div className="aspect-[4/5] w-full overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-4 text-center flex-1 flex flex-col justify-between min-h-[120px]">
-                    <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
-                    <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{item.price}</p>
-                  </div>
-                </div>
+                <CarouselCard img={item.img} name={item.name} price={item.price} />
               </div>
             ))}
           </div>
         </div>
       </div>
     </section>
+  );
+};
+
+function parsePrice(label: string): number {
+  const match = label.replace(/[^\d,.]/g, "").replace(",", ".");
+  return parseFloat(match) || 0;
+}
+
+const CarouselCard = ({ img, name, price }: { img: string; name: string; price: string }) => {
+  const { addItem } = useCart();
+  return (
+    <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
+      <div className="aspect-[4/5] w-full overflow-hidden relative">
+        <img src={img} alt={name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <button
+          onClick={() => addItem({ id: cartItemId(name), image: img, name, price: parsePrice(price), priceLabel: price })}
+          className="absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-110"
+          style={{ backgroundColor: "#a04ba0" }}
+          aria-label={`Adicionar ${name} ao carrinho`}
+        >
+          <ShoppingCart size={18} />
+        </button>
+      </div>
+      <div className="p-4 text-center flex-1 flex flex-col justify-between min-h-[120px]">
+        <h3 className="font-display text-base font-semibold text-foreground leading-snug">{name}</h3>
+        <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{price}</p>
+      </div>
+    </div>
   );
 };
 
