@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
+import { useCart, cartItemId } from "@/contexts/CartContext";
 
 interface ProductSlide {
   img: string;
@@ -12,7 +13,13 @@ interface ProductCarouselProps {
   products: ProductSlide[];
 }
 
+function parsePrice(label: string): number {
+  const match = label.replace(/[^\d,.]/g, "").replace(",", ".");
+  return parseFloat(match) || 0;
+}
+
 const ProductCarousel = ({ products }: ProductCarouselProps) => {
+  const { addItem } = useCart();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
@@ -38,7 +45,6 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
 
   return (
     <div className="relative max-w-6xl mx-auto px-12 md:px-14">
-      {/* Arrows */}
       <button
         onClick={scrollPrev}
         className="absolute left-0 top-[calc(50%-40px)] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 border border-border shadow-md flex items-center justify-center text-foreground hover:bg-secondary transition-colors"
@@ -54,7 +60,6 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
         <ChevronRight size={22} />
       </button>
 
-      {/* Carousel */}
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex">
           {products.map((item, i) => (
@@ -63,21 +68,20 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
               className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_25%] px-2"
             >
               <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border h-full flex flex-col">
-                <div className="aspect-square bg-white flex items-center justify-center overflow-hidden">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                  />
+                <div className="aspect-square bg-white flex items-center justify-center overflow-hidden relative">
+                  <img src={item.img} alt={item.name} className="w-full h-full object-contain" loading="lazy" />
+                  <button
+                    onClick={() => addItem({ id: cartItemId(item.name), image: item.img, name: item.name, price: parsePrice(item.price), priceLabel: item.price })}
+                    className="absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-110"
+                    style={{ backgroundColor: "#a04ba0" }}
+                    aria-label={`Adicionar ${item.name} ao carrinho`}
+                  >
+                    <ShoppingCart size={18} />
+                  </button>
                 </div>
                 <div className="p-4 text-center flex flex-col flex-1 justify-center">
-                  <h3 className="font-display text-base font-semibold text-foreground leading-snug">
-                    {item.name}
-                  </h3>
-                  <p className="font-body font-bold text-lg mt-2" style={{ color: "hsl(300, 37%, 47%)" }}>
-                    {item.price}
-                  </p>
+                  <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
+                  <p className="font-body font-bold text-lg mt-2" style={{ color: "hsl(300, 37%, 47%)" }}>{item.price}</p>
                 </div>
               </div>
             </div>
@@ -85,17 +89,12 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
         </div>
       </div>
 
-      {/* Dots */}
       <div className="flex justify-center gap-2 mt-6">
         {scrollSnaps.map((_, i) => (
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              i === selectedIndex
-                ? "bg-purple scale-110"
-                : "bg-border"
-            }`}
+            className={`w-3 h-3 rounded-full transition-all ${i === selectedIndex ? "bg-purple scale-110" : "bg-border"}`}
             aria-label={`Slide ${i + 1}`}
           />
         ))}
