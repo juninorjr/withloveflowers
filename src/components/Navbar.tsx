@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 import logo from "@/assets/logo.webp";
 
 const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
@@ -8,6 +9,7 @@ const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { totalItems, setIsOpen: openCart } = useCart();
 
   const links = [
     { to: "/", label: "Início" },
@@ -44,10 +46,27 @@ const Navbar = () => {
           >
             Fazer Pedido
           </a>
+          <button onClick={() => openCart(true)} className="relative text-foreground hover:text-primary transition-colors" aria-label="Carrinho">
+            <ShoppingCart size={22} />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center" style={{ backgroundColor: "#a04ba0" }}>
+                {totalItems}
+              </span>
+            )}
+          </button>
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-foreground">
+        <div className="flex items-center gap-3 md:hidden">
+          <button onClick={() => openCart(true)} className="relative text-foreground" aria-label="Carrinho">
+            <ShoppingCart size={22} />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center" style={{ backgroundColor: "#a04ba0" }}>
+                {totalItems}
+              </span>
+            )}
+          </button>
+          <button onClick={() => setOpen(!open)} className="text-foreground">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
