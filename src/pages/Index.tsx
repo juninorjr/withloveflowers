@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import produto4 from "@/assets/produto-4.jpg";
+import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
+import { useCart, cartItemId } from "@/contexts/CartContext";
 import produto5 from "@/assets/produto-5.jpg";
 import produto6 from "@/assets/produto-6.jpg";
 import produto7 from "@/assets/produto-7.jpg";
