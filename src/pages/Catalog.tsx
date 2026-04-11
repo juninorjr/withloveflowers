@@ -20,6 +20,12 @@ import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
 
 const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.bouquet);
 
+const solitarioProducts = [
+  { img: rosaColombiana, name: "Rosa Colombiana", price: "R$21,00" },
+  { img: girassol, name: "Girassol", price: "R$17,00" },
+  { img: lirio, name: "Lírio", price: "R$35,00" },
+];
+
 const carouselProducts = [
   { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$ 65,00" },
   { img: produto5, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "A partir de R$ 100,00" },
@@ -41,13 +47,15 @@ const Catalog = () => {
           </p>
         </div>
 
-        {/* Rosas */}
+        {/* Botão Solitário */}
         <section className="mb-16">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center">🌹 Botão Solitario</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <ProductCard image={rosaColombiana} name="Rosa Colombiana" price="R$21" description="Por unidade" />
-            
-          </div>
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
+            🌷 Botão Solitário
+          </h2>
+          <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
+            Flores individuais perfeitas para compor seu arranjo personalizado.
+          </p>
+          <ProductCarousel products={solitarioProducts} />
         </section>
 
         {/* Carousel de Produtos */}
@@ -61,21 +69,6 @@ const Catalog = () => {
           <ProductCarousel products={carouselProducts} />
         </section>
 
-        {/* Girassóis */}
-        <section className="mb-16">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center">🌻 Girassóis</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <ProductCard image={girassol} name="Girassol" price="R$17" description="Por unidade" />
-          </div>
-        </section>
-
-        {/* Outras Flores */}
-        <section className="mb-16">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center">🌸 Outras Flores</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <ProductCard image={lirio} name="Lírio" price="R$35" description="Por haste" />
-          </div>
-        </section>
 
         {/* Personalization note */}
         <div className="bg-rose-light rounded-lg p-8 text-center max-w-2xl mx-auto">
