@@ -7,7 +7,7 @@ import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
 const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.default);
 
 const Footer = () => (
-  <footer className="bg-secondary py-12">
+  <footer className="py-12 bg-rose-50">
     <div className="container mx-auto px-4">
       <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
         <div>
