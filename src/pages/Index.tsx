@@ -18,7 +18,9 @@ import produto15 from "@/assets/produto-15.jpg";
 import HeroSlider from "@/components/HeroSlider";
 import { getWhatsAppLink } from "@/config/whatsapp";
 
-const WHATSAPP_LINK = getWhatsAppLink();
+import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
+
+const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.default);
 
 const Index = () => {
   return (

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useCart } from "@/contexts/CartContext";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
@@ -7,10 +8,13 @@ const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
 
 const CartDrawer = () => {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, totalPrice } = useCart();
+  const [clientName, setClientName] = useState("");
+  const [observations, setObservations] = useState("");
 
   const handleFinalize = () => {
-    const lines = items.map((i) => `• ${i.name} (x${i.quantity}) — ${i.priceLabel}`);
-    const msg = `Olá! Gostaria de finalizar meu pedido:\n\n${lines.join("\n")}\n\nTotal: R$ ${totalPrice.toFixed(2).replace(".", ",")}`;
+    const lines = items.map((i) => `${i.name} x${i.quantity} — ${i.priceLabel}`);
+    const totalFormatted = `R$${totalPrice.toFixed(2).replace(".", ",")}`;
+    const msg = `Olá, vim pelo site da WithLove e gostaria de finalizar meu pedido. Seguem os itens:\n\nNome: ${clientName || "(não informado)"}\n\nPedido:\n${lines.join("\n")}\n\nTotal: ${totalFormatted}\n\nObservações: ${observations || "Nenhuma"}`;
     window.open(WHATSAPP_BASE + encodeURIComponent(msg), "_blank");
   };
 
@@ -64,6 +68,30 @@ const CartDrawer = () => {
                   </div>
                 </div>
               ))}
+
+              {/* Client info fields */}
+              <div className="space-y-3 pt-2">
+                <div>
+                  <label className="font-body text-xs font-semibold text-muted-foreground mb-1 block">Seu nome</label>
+                  <input
+                    type="text"
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
+                    placeholder="Digite seu nome"
+                    className="w-full border border-border rounded-lg px-3 py-2 font-body text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  />
+                </div>
+                <div>
+                  <label className="font-body text-xs font-semibold text-muted-foreground mb-1 block">Observações</label>
+                  <textarea
+                    value={observations}
+                    onChange={(e) => setObservations(e.target.value)}
+                    placeholder="Ex: entregar às 14h, cartão com mensagem..."
+                    rows={2}
+                    className="w-full border border-border rounded-lg px-3 py-2 font-body text-sm bg-background text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="border-t border-border pt-4 space-y-3">

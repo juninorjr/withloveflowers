@@ -5,7 +5,9 @@ import { useCart } from "@/contexts/CartContext";
 import logo from "@/assets/logo.webp";
 import { getWhatsAppLink } from "@/config/whatsapp";
 
-const WHATSAPP_LINK = getWhatsAppLink();
+import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
+
+const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.default);
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
