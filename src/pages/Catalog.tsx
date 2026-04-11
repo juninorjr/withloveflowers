@@ -69,21 +69,6 @@ const Catalog = () => {
           <ProductCarousel products={carouselProducts} />
         </section>
 
-        {/* Girassóis */}
-        <section className="mb-16">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center">🌻 Girassóis</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <ProductCard image={girassol} name="Girassol" price="R$17" description="Por unidade" />
-          </div>
-        </section>
-
-        {/* Outras Flores */}
-        <section className="mb-16">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center">🌸 Outras Flores</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <ProductCard image={lirio} name="Lírio" price="R$35" description="Por haste" />
-          </div>
-        </section>
 
         {/* Personalization note */}
         <div className="bg-rose-light rounded-lg p-8 text-center max-w-2xl mx-auto">
