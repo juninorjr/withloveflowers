@@ -92,23 +92,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-rose-light">
-        <div className="container mx-auto px-4 text-center max-w-2xl">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Pronta para surpreender?</h2>
-          <p className="text-muted-foreground font-body mb-8">
-            Faça seu pedido pelo WhatsApp e receba flores frescas com entrega rápida.
-          </p>
-          <a
-            href={WHATSAPP_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-primary text-primary-foreground px-10 py-4 rounded-full font-body font-bold text-sm tracking-wide hover:opacity-90 transition-opacity"
-          >
-            Fazer pedido no WhatsApp
-          </a>
-        </div>
-      </section>
     </main>
   );
 };
