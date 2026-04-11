@@ -47,13 +47,15 @@ const Catalog = () => {
           </p>
         </div>
 
-        {/* Rosas */}
+        {/* Botão Solitário */}
         <section className="mb-16">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center">🌹 Botão Solitario</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <ProductCard image={rosaColombiana} name="Rosa Colombiana" price="R$21" description="Por unidade" />
-            
-          </div>
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
+            🌷 Botão Solitário
+          </h2>
+          <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
+            Flores individuais perfeitas para compor seu arranjo personalizado.
+          </p>
+          <ProductCarousel products={solitarioProducts} />
         </section>
 
         {/* Carousel de Produtos */}
