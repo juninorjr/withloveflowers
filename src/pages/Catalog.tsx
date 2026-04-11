@@ -1,5 +1,6 @@
 import ProductCard from "@/components/ProductCard";
 import ProductCarousel from "@/components/ProductCarousel";
+import { getWhatsAppLink } from "@/config/whatsapp";
 import rosaColombiana from "@/assets/rosa-colombiana.jpg";
 import rosaSolitaria from "@/assets/rosa-solitaria.jpg";
 import girassol from "@/assets/girassol.jpg";

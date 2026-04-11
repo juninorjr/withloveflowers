@@ -16,8 +16,9 @@ import produto13 from "@/assets/produto-13.jpg";
 import produto14 from "@/assets/produto-14.jpg";
 import produto15 from "@/assets/produto-15.jpg";
 import HeroSlider from "@/components/HeroSlider";
+import { getWhatsAppLink } from "@/config/whatsapp";
 
-const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
+const WHATSAPP_LINK = getWhatsAppLink();
 
 const Index = () => {
   return (
