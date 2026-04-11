@@ -24,8 +24,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-20 px-4">
         <Link to="/" className="flex items-center gap-2 font-display text-2xl font-bold text-purple tracking-wide">
-          <img src={logo} alt="WithLove logo" className="h-9 w-9 object-contain" />
-          WithLove Flowers
+          <img src={logo} alt="With Love logo" className="h-9 w-9 object-contain" />
+          With Love Flowers
         </Link>
 
         {/* Desktop */}
