@@ -28,9 +28,9 @@ const Footer = () => (
           </div>
         </div>
         <div>
-          <h4 className="font-display text-lg font-semibold text-foreground mb-3">Localização</h4>
+          <h4 className="font-display text-lg font-semibold text-foreground mb-3">Local de Retirada</h4>
           <p className="text-sm text-muted-foreground font-body flex items-center justify-center md:justify-start gap-2">
-            <MapPin size={16} /> Rua Francisco Dalbo, 707 – Jaguariúna
+            <MapPin size={16} /> Rua Rio Grande do Sul 201 – Jaguariúna
           </p>
         </div>
       </div>
