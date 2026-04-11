@@ -29,7 +29,7 @@ const Index = () => {
       <HeroSlider />
 
       {/* Categories & Welcome */}
-      <section className="py-10 md:py-12 bg-background">
+      <section className="py-10 md:py-12 bg-purple-light">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="font-display text-xl md:text-2xl font-semibold text-center text-foreground mb-6">
             O que você procura hoje?
@@ -38,10 +38,7 @@ const Index = () => {
             {["Todos", "Buquês", "Rosas", "Presentes", "Cestas"].map((cat) => (
               <button
                 key={cat}
-                className="flex-shrink-0 px-6 py-2.5 rounded-full font-body text-sm font-medium transition-colors"
-                style={{ backgroundColor: "#F8F0FF", color: "#a04ba0" }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#EDE0F5")}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#F8F0FF")}
+                className="flex-shrink-0 px-6 py-2.5 rounded-full font-body text-sm font-medium transition-colors text-purple-50 bg-purple"
               >
                 {cat}
               </button>
@@ -184,7 +181,7 @@ const RosasCarousel = () => {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="bg-purple-light py-[40px]">
+    <section className="py-[40px] bg-purple-light">
       <div className="px-4 md:container md:mx-auto">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
           Presentes Inesquecíveis ✨
