@@ -20,6 +20,12 @@ import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
 
 const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.bouquet);
 
+const solitarioProducts = [
+  { img: rosaColombiana, name: "Rosa Colombiana", price: "R$21,00" },
+  { img: girassol, name: "Girassol", price: "R$17,00" },
+  { img: lirio, name: "Lírio", price: "R$35,00" },
+];
+
 const carouselProducts = [
   { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$ 65,00" },
   { img: produto5, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "A partir de R$ 100,00" },
