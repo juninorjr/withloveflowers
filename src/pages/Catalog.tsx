@@ -38,7 +38,7 @@ const carouselProducts = [
 
 const Catalog = () => {
   return (
-    <main className="pt-24 pb-16">
+    <main className="pt-24 pb-16 bg-purple-light">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-3">Nosso Catálogo</h1>
