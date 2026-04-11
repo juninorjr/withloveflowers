@@ -62,7 +62,7 @@ const Index = () => {
 
 
       {/* Why Buy From Us */}
-      <section className="py-20 bg-secondary">
+      <section className="bg-secondary py-[40px]">
         <div className="container mx-auto px-4">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
             Por que comprar conosco?
