@@ -43,7 +43,7 @@ const Catalog = () => {
 
         {/* Rosas */}
         <section className="mb-16">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center">🌹 Rosas</h2>
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center">🌹 Botão Solitario</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <ProductCard image={rosaColombiana} name="Rosa Colombiana" price="R$21" description="Por unidade" />
             
