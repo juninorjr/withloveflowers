@@ -1,7 +1,9 @@
 import { MapPin, Truck, Clock } from "lucide-react";
 import { getWhatsAppLink } from "@/config/whatsapp";
 
-const WHATSAPP_LINK = getWhatsAppLink("Olá! Gostaria de saber sobre entrega.");
+import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
+
+const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.delivery);
 
 const deliveryFees = [
   { city: "Jaguariúna", fee: "R$15" },

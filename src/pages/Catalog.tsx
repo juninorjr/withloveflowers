@@ -16,7 +16,9 @@ import produto8 from "@/assets/produto-8.jpg";
 import produto9 from "@/assets/produto-9.jpg";
 import produto10 from "@/assets/produto-10.webp";
 
-const WHATSAPP_LINK = getWhatsAppLink();
+import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
+
+const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.bouquet);
 
 const carouselProducts = [
   { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$ 65,00" },

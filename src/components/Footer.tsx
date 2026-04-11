@@ -2,7 +2,9 @@ import { Heart, Instagram, MapPin } from "lucide-react";
 import logo from "@/assets/logo-2.png";
 import { getWhatsAppLink } from "@/config/whatsapp";
 
-const WHATSAPP_LINK = getWhatsAppLink();
+import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
+
+const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.default);
 
 const Footer = () => (
   <footer className="bg-secondary py-12">
