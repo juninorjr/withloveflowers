@@ -120,7 +120,7 @@ const PromoCarousel = () => {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="py-20 bg-rose-light">
+    <section className="bg-rose-light py-[40px]">
       <div className="px-4 md:container md:mx-auto">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
           Dia da Mulher 🌸
@@ -184,7 +184,7 @@ const RosasCarousel = () => {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="py-20 bg-purple-light">
+    <section className="bg-purple-light py-[40px]">
       <div className="px-4 md:container md:mx-auto">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
           Presentes Inesquecíveis ✨
