@@ -11,11 +11,11 @@ const CartDrawer = () => {
   const [clientName, setClientName] = useState("");
   const [observations, setObservations] = useState("");
 
-  const handleFinalize = () => {
+  const getFinalizeLink = () => {
     const lines = items.map((i) => `${i.name} x${i.quantity} — ${i.priceLabel}`);
     const totalFormatted = `R$${totalPrice.toFixed(2).replace(".", ",")}`;
     const msg = `Olá, vim pelo site da WithLove e gostaria de finalizar meu pedido. Seguem os itens:\n\nNome: ${clientName || "(não informado)"}\n\nPedido:\n${lines.join("\n")}\n\nTotal: ${totalFormatted}\n\nObservações: ${observations || "Nenhuma"}`;
-    window.open(WHATSAPP_BASE + encodeURIComponent(msg), "_blank");
+    return WHATSAPP_BASE + encodeURIComponent(msg);
   };
 
   return (
