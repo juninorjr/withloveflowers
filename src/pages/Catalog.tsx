@@ -1,5 +1,6 @@
 import ProductCard from "@/components/ProductCard";
 import ProductCarousel from "@/components/ProductCarousel";
+import { getWhatsAppLink } from "@/config/whatsapp";
 import rosaColombiana from "@/assets/rosa-colombiana.jpg";
 import rosaSolitaria from "@/assets/rosa-solitaria.jpg";
 import girassol from "@/assets/girassol.jpg";
@@ -15,7 +16,7 @@ import produto8 from "@/assets/produto-8.jpg";
 import produto9 from "@/assets/produto-9.jpg";
 import produto10 from "@/assets/produto-10.webp";
 
-const WHATSAPP_LINK = "https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20de%20flores.";
+const WHATSAPP_LINK = getWhatsAppLink();
 
 const carouselProducts = [
   { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$ 65,00" },
