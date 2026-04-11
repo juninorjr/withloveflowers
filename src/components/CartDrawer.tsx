@@ -6,15 +6,28 @@ import { WHATSAPP_NUMBER } from "@/config/whatsapp";
 
 const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
 
+const DELIVERY_OPTIONS = [
+  { label: "Retirada", fee: 0 },
+  { label: "Entrega em Jaguariúna", fee: 15 },
+  { label: "Entrega em Holambra", fee: 25 },
+  { label: "Entrega em Santo Antônio da Posse", fee: 25 },
+] as const;
+
 const CartDrawer = () => {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, totalPrice } = useCart();
   const [clientName, setClientName] = useState("");
   const [observations, setObservations] = useState("");
+  const [deliveryIndex, setDeliveryIndex] = useState(0);
+
+  const deliveryFee = DELIVERY_OPTIONS[deliveryIndex].fee;
+  const grandTotal = totalPrice + deliveryFee;
 
   const getFinalizeLink = () => {
     const lines = items.map((i) => `${i.name} x${i.quantity} — ${i.priceLabel}`);
-    const totalFormatted = `R$${totalPrice.toFixed(2).replace(".", ",")}`;
-    const msg = `Olá, vim pelo site da WithLove e gostaria de finalizar meu pedido. Seguem os itens:\n\nNome: ${clientName || "(não informado)"}\n\nPedido:\n${lines.join("\n")}\n\nTotal: ${totalFormatted}\n\nObservações: ${observations || "Nenhuma"}`;
+    const delivery = DELIVERY_OPTIONS[deliveryIndex];
+    const feeFormatted = `R$${deliveryFee.toFixed(2).replace(".", ",")}`;
+    const totalFormatted = `R$${grandTotal.toFixed(2).replace(".", ",")}`;
+    const msg = `Olá, vim pelo site da WithLove e gostaria de finalizar meu pedido. Seguem os itens:\n\nNome: ${clientName || "(não informado)"}\n\nPedido:\n${lines.join("\n")}\n\nModo de entrega: ${delivery.label}\nTaxa de entrega: ${feeFormatted}\n\nTotal: ${totalFormatted}\n\nObservações: ${observations || "Nenhuma"}`;
     return WHATSAPP_BASE + encodeURIComponent(msg);
   };
 
@@ -91,14 +104,34 @@ const CartDrawer = () => {
                     className="w-full border border-border rounded-lg px-3 py-2 font-body text-sm bg-background text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/40"
                   />
                 </div>
+                <div>
+                  <label className="font-body text-xs font-semibold text-muted-foreground mb-1 block">Modo de entrega</label>
+                  <select
+                    value={deliveryIndex}
+                    onChange={(e) => setDeliveryIndex(Number(e.target.value))}
+                    className="w-full border border-border rounded-lg px-3 py-2 font-body text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 appearance-none"
+                  >
+                    {DELIVERY_OPTIONS.map((opt, i) => (
+                      <option key={i} value={i}>
+                        {opt.label}{opt.fee > 0 ? ` — R$${opt.fee.toFixed(2).replace(".", ",")}` : " (sem custo)"}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 
             <div className="border-t border-border pt-4 space-y-3">
+              {deliveryFee > 0 && (
+                <div className="flex justify-between font-body text-sm text-muted-foreground">
+                  <span>Taxa de entrega</span>
+                  <span>R$ {deliveryFee.toFixed(2).replace(".", ",")}</span>
+                </div>
+              )}
               <div className="flex justify-between font-body">
                 <span className="text-muted-foreground">Total</span>
                 <span className="font-bold text-lg" style={{ color: "#a04ba0" }}>
-                  R$ {totalPrice.toFixed(2).replace(".", ",")}
+                  R$ {grandTotal.toFixed(2).replace(".", ",")}
                 </span>
               </div>
               <a
