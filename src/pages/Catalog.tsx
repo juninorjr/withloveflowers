@@ -15,6 +15,11 @@ import produto7 from "@/assets/produto-7.jpg";
 import produto8 from "@/assets/produto-8.jpg";
 import produto9 from "@/assets/produto-9.jpg";
 import produto10 from "@/assets/produto-10.webp";
+import produto11 from "@/assets/produto-11.jpg";
+import produto12 from "@/assets/produto-12.jpg";
+import produto13 from "@/assets/produto-13.jpg";
+import produto14 from "@/assets/produto-14.jpg";
+import produto15 from "@/assets/produto-15.jpg";
 
 import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
 
@@ -34,6 +39,14 @@ const carouselProducts = [
   { img: produto8, name: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis", price: "A partir de R$ 200,00" },
   { img: produto9, name: "Buquê Pequeno de Lírios Brancos e Margaridas Pink", price: "A partir de R$ 90,00" },
   { img: produto10, name: "Minibuquê de Girassol e Crisântemos Coloridos", price: "A partir de R$ 50,00" },
+];
+
+const diversosProducts = [
+  { img: produto11, name: "Buquê Romântico de Rosas e Astromélias", price: "A partir de R$ 75,00" },
+  { img: produto12, name: "Buquê Delicado de Flores do Campo", price: "A partir de R$ 60,00" },
+  { img: produto13, name: "Buquê Especial de Gérberas Coloridas", price: "A partir de R$ 85,00" },
+  { img: produto14, name: "Buquê Sofisticado de Lírios e Rosas", price: "A partir de R$ 120,00" },
+  { img: produto15, name: "Buquê Encantado de Margaridas e Cravos", price: "A partir de R$ 70,00" },
 ];
 
 const Catalog = () => {
@@ -67,6 +80,17 @@ const Catalog = () => {
             Descubra composições únicas feitas com carinho para cada ocasião.
           </p>
           <ProductCarousel products={carouselProducts} />
+        </section>
+
+        {/* Buquês Diversos */}
+        <section className="mb-16">
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
+            🌸 Buquês Diversos
+          </h2>
+          <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
+            Explore diferentes combinações de flores para todas as ocasiões.
+          </p>
+          <ProductCarousel products={diversosProducts} />
         </section>
 
 
