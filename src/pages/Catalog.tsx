@@ -82,6 +82,17 @@ const Catalog = () => {
           <ProductCarousel products={carouselProducts} />
         </section>
 
+        {/* Buquês Diversos */}
+        <section className="mb-16">
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
+            🌸 Buquês Diversos
+          </h2>
+          <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
+            Explore diferentes combinações de flores para todas as ocasiões.
+          </p>
+          <ProductCarousel products={diversosProducts} />
+        </section>
+
 
         {/* Personalization note */}
         <div className="bg-rose-light rounded-lg p-8 text-center max-w-2xl mx-auto">
