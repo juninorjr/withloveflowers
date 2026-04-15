@@ -69,7 +69,7 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
             >
               <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border h-full flex flex-col">
                 <div className="aspect-square bg-white flex items-center justify-center overflow-hidden relative">
-                  <img src={item.img} alt={item.name} className="w-full h-full object-contain" loading="lazy" />
+                  <img src={item.img} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
                   <button
                     onClick={() => addItem({ id: cartItemId(item.name), image: item.img, name: item.name, price: parsePrice(item.price), priceLabel: item.price })}
                     className="absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-110"
