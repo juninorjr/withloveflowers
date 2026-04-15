@@ -35,7 +35,7 @@ const Index = () => {
             O que você procura hoje?
           </h2>
           <div className="flex gap-3 overflow-x-auto no-scrollbar pb-2 justify-start md:justify-center">
-            {["Todos", "Buquês", "Rosas", "Presentes", "Cestas"].map((cat) => (
+            {["Buquês", "Rosas", "Presentes", "Cestas"].map((cat) => (
               <button
                 key={cat}
                 className="flex-shrink-0 px-6 py-2.5 rounded-full font-body text-sm font-medium transition-colors text-purple-50 bg-purple"
