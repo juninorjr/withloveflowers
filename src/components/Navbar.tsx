@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
@@ -12,13 +12,25 @@ const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.default);
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const { totalItems, setIsOpen: openCart } = useCart();
+  const { totalItems, setIsOpen: openCart, lastAddedAt } = useCart();
+  const [pulse, setPulse] = useState(false);
+
+  useEffect(() => {
+    if (!lastAddedAt) return;
+    setPulse(true);
+    const t = setTimeout(() => setPulse(false), 700);
+    return () => clearTimeout(t);
+  }, [lastAddedAt]);
 
   const links = [
     { to: "/", label: "Início" },
     { to: "/catalogo", label: "Catálogo" },
     { to: "/entrega", label: "Entrega" },
   ];
+
+  const cartIconClass = `relative inline-flex items-center justify-center rounded-full p-1 ${pulse ? "animate-cart-ring" : ""}`;
+  const iconAnim = pulse ? "animate-cart-pulse" : "";
+  const badgeAnim = pulse ? "animate-badge-pop" : "";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
@@ -49,10 +61,12 @@ const Navbar = () => {
           >
             Fazer Pedido
           </a>
-          <button onClick={() => openCart(true)} className="relative text-foreground hover:text-primary transition-colors" aria-label="Carrinho">
-            <ShoppingCart size={22} />
+          <button onClick={() => openCart(true)} className={`${cartIconClass} text-foreground hover:text-primary transition-colors`} aria-label="Carrinho">
+            <span className={`inline-block ${iconAnim}`}>
+              <ShoppingCart size={22} />
+            </span>
             {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center" style={{ backgroundColor: "#a04ba0" }}>
+              <span className={`absolute -top-1 -right-1 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center ${badgeAnim}`} style={{ backgroundColor: "#a04ba0" }}>
                 {totalItems}
               </span>
             )}
@@ -61,10 +75,12 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <div className="flex items-center gap-3 md:hidden">
-          <button onClick={() => openCart(true)} className="relative text-foreground" aria-label="Carrinho">
-            <ShoppingCart size={22} />
+          <button onClick={() => openCart(true)} className={`${cartIconClass} text-foreground`} aria-label="Carrinho">
+            <span className={`inline-block ${iconAnim}`}>
+              <ShoppingCart size={22} />
+            </span>
             {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center" style={{ backgroundColor: "#a04ba0" }}>
+              <span className={`absolute -top-1 -right-1 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center ${badgeAnim}`} style={{ backgroundColor: "#a04ba0" }}>
                 {totalItems}
               </span>
             )}
