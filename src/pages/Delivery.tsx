@@ -58,7 +58,7 @@ const Delivery = () => {
           </div>
           <p className="font-body text-muted-foreground mb-2 text-center">Disponível para retirada em:</p>
           <p className="font-body font-semibold text-foreground text-center">
-            Rua Francisco Dalbo, 707 – Jaguariúna
+            Rua Rio Grande do Sul, 201 – Jaguariúna
           </p>
           <p className="font-body text-primary font-medium mt-3 text-center text-base">
             Retiradas disponíveis a partir das 14:30.
