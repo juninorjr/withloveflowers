@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useCart } from "@/contexts/CartContext";
-import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingBag, Info } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/config/whatsapp";
 
 const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
@@ -35,6 +35,15 @@ const CartDrawer = () => {
         ) : (
           <>
             <div className="flex-1 overflow-y-auto space-y-4 py-4 pr-1">
+              <div
+                className="flex items-start gap-2 rounded-lg px-3 py-2.5 border"
+                style={{ backgroundColor: "#f7ecf7", borderColor: "#e9d4e9" }}
+              >
+                <Info size={16} className="mt-0.5 flex-shrink-0" style={{ color: "#a04ba0" }} />
+                <p className="font-body text-xs leading-relaxed" style={{ color: "#6b3a6b" }}>
+                  Pedidos realizados até as <strong>14:00</strong> são entregues no mesmo dia. Após esse horário, a entrega será feita no dia seguinte.
+                </p>
+              </div>
               {items.map((item) => (
                 <div key={item.id} className="flex gap-3 border border-border rounded-lg p-3">
                   <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-md flex-shrink-0" />
