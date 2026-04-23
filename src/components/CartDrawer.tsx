@@ -3,19 +3,55 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import { useCart } from "@/contexts/CartContext";
 import { Minus, Plus, Trash2, ShoppingBag, Info } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/config/whatsapp";
+import { toast } from "@/hooks/use-toast";
 
 const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
+
+type DeliveryOptionId = "retirada" | "jaguariuna" | "holambra" | "posse";
+
+interface DeliveryOption {
+  id: DeliveryOptionId;
+  label: string;
+  fee: number;
+}
+
+const DELIVERY_OPTIONS: DeliveryOption[] = [
+  { id: "retirada", label: "Retirada (sem custo)", fee: 0 },
+  { id: "jaguariuna", label: "Entrega em Jaguariúna", fee: 15 },
+  { id: "holambra", label: "Entrega em Holambra", fee: 25 },
+  { id: "posse", label: "Entrega em Santo Antônio da Posse", fee: 25 },
+];
+
+const formatBRL = (value: number) => `R$${value.toFixed(2).replace(".", ",")}`;
 
 const CartDrawer = () => {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, totalPrice } = useCart();
   const [clientName, setClientName] = useState("");
   const [observations, setObservations] = useState("");
+  const [deliveryMode, setDeliveryMode] = useState<DeliveryOptionId | "">("");
+
+  const selectedDelivery = DELIVERY_OPTIONS.find((o) => o.id === deliveryMode);
+  const deliveryFee = selectedDelivery?.fee ?? 0;
+  const grandTotal = totalPrice + deliveryFee;
 
   const getFinalizeLink = () => {
     const lines = items.map((i) => `${i.name} x${i.quantity} — ${i.priceLabel}`);
-    const totalFormatted = `R$${totalPrice.toFixed(2).replace(".", ",")}`;
-    const msg = `Olá, vim pelo site da WithLoveFlowers e gostaria de finalizar meu pedido. Seguem os itens:\n\nNome: ${clientName || "(não informado)"}\n\nPedido:\n${lines.join("\n")}\n\nTotal: ${totalFormatted}\n\nObservações: ${observations || "Nenhuma"}`;
+    const deliveryLabel = selectedDelivery
+      ? `${selectedDelivery.label}${selectedDelivery.fee > 0 ? ` — ${formatBRL(selectedDelivery.fee)}` : ""}`
+      : "(não informado)";
+    const msg = `Olá, vim pelo site da WithLoveFlowers e gostaria de finalizar meu pedido. Seguem os itens:\n\nNome: ${clientName || "(não informado)"}\n\nPedido:\n${lines.join("\n")}\n\nModo de entrega: ${deliveryLabel}\n\nTotal: ${formatBRL(grandTotal)}\n\nObservações: ${observations || "Nenhuma"}`;
     return WHATSAPP_BASE + encodeURIComponent(msg);
+  };
+
+  const handleFinalizeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!deliveryMode) {
+      e.preventDefault();
+      toast({
+        title: "Selecione o modo de entrega",
+        description: "Escolha uma opção de entrega ou retirada antes de finalizar.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -106,21 +142,54 @@ const CartDrawer = () => {
                     className="w-full border border-border rounded-lg px-3 py-2 font-body text-sm bg-background text-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/40"
                   />
                 </div>
+                <div>
+                  <label className="font-body text-xs font-semibold text-muted-foreground mb-1 block">
+                    Modo de entrega <span style={{ color: "#a04ba0" }}>*</span>
+                  </label>
+                  <select
+                    value={deliveryMode}
+                    onChange={(e) => setDeliveryMode(e.target.value as DeliveryOptionId | "")}
+                    className="w-full border border-border rounded-lg px-3 py-2 font-body text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 appearance-none bg-[length:16px] bg-no-repeat bg-[right_0.75rem_center] pr-9"
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a04ba0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e\")",
+                    }}
+                  >
+                    <option value="" disabled>Selecione uma opção</option>
+                    {DELIVERY_OPTIONS.map((opt) => (
+                      <option key={opt.id} value={opt.id}>
+                        {opt.label}
+                        {opt.fee > 0 ? ` (${formatBRL(opt.fee)})` : ""}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 
             <div className="border-t border-border pt-4 space-y-3">
-              <div className="flex justify-between font-body">
-                <span className="text-muted-foreground">Total</span>
-                <span className="font-bold text-lg" style={{ color: "#a04ba0" }}>
-                  R$ {totalPrice.toFixed(2).replace(".", ",")}
-                </span>
+              <div className="space-y-1 font-body text-sm">
+                <div className="flex justify-between text-muted-foreground">
+                  <span>Subtotal</span>
+                  <span>{formatBRL(totalPrice)}</span>
+                </div>
+                <div className="flex justify-between text-muted-foreground">
+                  <span>Entrega</span>
+                  <span>{selectedDelivery ? formatBRL(deliveryFee) : "—"}</span>
+                </div>
+                <div className="flex justify-between pt-1">
+                  <span className="font-bold text-foreground">Total</span>
+                  <span className="font-bold text-lg" style={{ color: "#a04ba0" }}>
+                    {formatBRL(grandTotal)}
+                  </span>
+                </div>
               </div>
               <a
                 href={getFinalizeLink()}
+                onClick={handleFinalizeClick}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-3 rounded-full font-body font-bold text-sm text-white text-center transition-opacity hover:opacity-90"
+                className={`block w-full py-3 rounded-full font-body font-bold text-sm text-white text-center transition-opacity ${deliveryMode ? "hover:opacity-90" : "opacity-60 cursor-not-allowed"}`}
                 style={{ backgroundColor: "#a04ba0" }}
               >
                 Finalizar pelo WhatsApp
