@@ -35,13 +35,19 @@ const Index = () => {
             O que você procura hoje?
           </h2>
           <div className="flex gap-3 overflow-x-auto no-scrollbar pb-2 justify-start md:justify-center">
-            {["Buquês", "Rosas", "Presentes", "Cestas"].map((cat) => (
-              <button
-                key={cat}
-                className="flex-shrink-0 px-6 py-2.5 rounded-full font-body text-sm font-medium transition-colors text-purple-50 bg-purple"
+            {[
+              { label: "Buquês", to: "/catalogo#buques" },
+              { label: "Rosas", to: "/catalogo#rosas" },
+              { label: "Presentes", to: "/#presentes" },
+              { label: "Cestas", to: "/catalogo#diversos" },
+            ].map((cat) => (
+              <Link
+                key={cat.label}
+                to={cat.to}
+                className="flex-shrink-0 px-6 py-2.5 rounded-full font-body text-sm font-medium transition-colors text-purple-50 bg-purple hover:opacity-90"
               >
-                {cat}
-              </button>
+                {cat.label}
+              </Link>
             ))}
           </div>
           <p className="flex items-center justify-center gap-1.5 text-muted-foreground font-body text-xs md:text-sm mt-6">
@@ -181,7 +187,7 @@ const RosasCarousel = () => {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="py-[40px] bg-purple-light">
+    <section id="presentes" className="py-[40px] bg-purple-light scroll-mt-24">
       <div className="px-4 md:container md:mx-auto">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
           Presentes Inesquecíveis ✨
