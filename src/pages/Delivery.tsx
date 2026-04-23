@@ -30,7 +30,7 @@ const Delivery = () => {
         >
           <Info size={18} className="mt-0.5 flex-shrink-0" style={{ color: "#a04ba0" }} />
           <p className="font-body text-sm leading-relaxed" style={{ color: "#6b3a6b" }}>
-            Pedidos realizados até as <strong>14:00</strong> são entregues no mesmo dia. Após esse horário, a entrega será feita no dia seguinte.
+            Pedidos realizados até as <strong>13:30</strong> são entregues no mesmo dia. Após esse horário, a entrega será feita no dia seguinte.
           </p>
         </div>
 
