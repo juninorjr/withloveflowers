@@ -60,6 +60,9 @@ const Delivery = () => {
           <p className="font-body font-semibold text-foreground">
             Rua Francisco Dalbo, 707 – Jaguariúna
           </p>
+          <p className="font-body text-sm text-primary font-medium mt-3">
+            Retiradas disponíveis a partir das 14:30.
+          </p>
         </div>
 
         {/* Schedule */}
