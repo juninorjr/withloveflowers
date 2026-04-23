@@ -61,7 +61,7 @@ const Catalog = () => {
         </div>
 
         {/* Botão Solitário */}
-        <section className="mb-16">
+        <section id="rosas" className="mb-16 scroll-mt-24">
           <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
             🌷 Botão Solitário
           </h2>
@@ -72,7 +72,7 @@ const Catalog = () => {
         </section>
 
         {/* Carousel de Produtos */}
-        <section className="mb-16">
+        <section id="buques" className="mb-16 scroll-mt-24">
           <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
             💐 Nossos Buquês
           </h2>
@@ -83,7 +83,7 @@ const Catalog = () => {
         </section>
 
         {/* Buquês Diversos */}
-        <section className="mb-16">
+        <section id="diversos" className="mb-16 scroll-mt-24">
           <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
             🌸 Buquês Diversos
           </h2>
