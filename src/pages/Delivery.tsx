@@ -54,13 +54,13 @@ const Delivery = () => {
         <div className="bg-card rounded-lg p-8 shadow-sm border border-border mb-8">
           <div className="flex items-center gap-3 mb-4">
             <MapPin size={24} className="text-primary" />
-            <h2 className="font-display text-xl font-semibold text-foreground">Retirada no Local</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground text-left">Retirada no Local</h2>
           </div>
-          <p className="font-body text-muted-foreground mb-2">Disponível para retirada em:</p>
-          <p className="font-body font-semibold text-foreground">
+          <p className="font-body text-muted-foreground mb-2 text-center">Disponível para retirada em:</p>
+          <p className="font-body font-semibold text-foreground text-center">
             Rua Francisco Dalbo, 707 – Jaguariúna
           </p>
-          <p className="font-body text-sm text-primary font-medium mt-3">
+          <p className="font-body text-primary font-medium mt-3 text-center text-base">
             Retiradas disponíveis a partir das 14:30.
           </p>
         </div>
