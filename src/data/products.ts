@@ -6,9 +6,6 @@
 //
 // O usuário enxerga apenas: nome, preço e imagem.
 
-import rosaColombiana from "@/assets/rosa-colombiana.jpg";
-import girassol from "@/assets/girassol.jpg";
-import lirio from "@/assets/lirio.jpg";
 import produto4 from "@/assets/produto-4.jpg";
 import produto5 from "@/assets/produto-5.jpg";
 import produto6 from "@/assets/produto-6.jpg";
@@ -22,6 +19,31 @@ import produto13 from "@/assets/produto-13.jpg";
 import produto14 from "@/assets/produto-14.jpg";
 import produto15 from "@/assets/produto-15.jpg";
 
+// Resolve automática de imagens por ID.
+// Cada arquivo em src/assets/products/<id>.<ext> é vinculado ao produto cujo `id` bate com o nome do arquivo.
+// Para adicionar um novo produto: salvar a imagem como `src/assets/products/<id>.png` (ou .jpg/.webp).
+const productImageModules = import.meta.glob(
+  "@/assets/products/*.{png,jpg,jpeg,webp}",
+  { eager: true, import: "default" }
+) as Record<string, string>;
+
+const productImagesById: Record<string, string> = Object.fromEntries(
+  Object.entries(productImageModules).map(([path, url]) => {
+    const fileName = path.split("/").pop() ?? "";
+    const id = fileName.replace(/\.[^.]+$/, "");
+    return [id, url];
+  })
+);
+
+export function getProductImage(id: string): string {
+  const img = productImagesById[id];
+  if (!img) {
+    console.warn(`[products] Imagem não encontrada para id "${id}". Adicione src/assets/products/${id}.png`);
+    return "";
+  }
+  return img;
+}
+
 export interface Product {
   id: string;          // interno — nunca renderizar
   nome: string;        // visível
@@ -30,10 +52,10 @@ export interface Product {
 }
 
 export const PRODUCTS = {
-  // Botão Solitário
-  ROSA_COLOMBIANA: { id: "sol-001", nome: "Rosa Colombiana", preco: "R$21,00", imagem: rosaColombiana },
-  GIRASSOL:        { id: "sol-002", nome: "Girassol",        preco: "R$17,00", imagem: girassol },
-  LIRIO:           { id: "sol-003", nome: "Lírio",           preco: "R$35,00", imagem: lirio },
+  // Botão Solitário — imagem resolvida automaticamente pelo id (src/assets/products/<id>.<ext>)
+  ROSA_COLOMBIANA: { id: "rosa_colombiana", nome: "Rosa Colombiana", preco: "R$21,00", imagem: getProductImage("rosa_colombiana") },
+  GIRASSOL:        { id: "girassol",        nome: "Girassol",        preco: "R$17,00", imagem: getProductImage("girassol") },
+  ROSA_NACIONAL:   { id: "rosa_nacional",   nome: "Rosa Nacional",   preco: "R$15,00", imagem: getProductImage("rosa_nacional") },
 
   // Buquês (catálogo)
   BUQUE_GIRASSOIS_ROSAS:        { id: "buq-001", nome: "Buquê de Girassóis e Rosas Vermelhas",                   preco: "A partir de R$ 65,00",  imagem: produto4 },

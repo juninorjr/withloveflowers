@@ -7,7 +7,7 @@ const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.bouquet);
 const solitarioProducts = [
   PRODUCTS.ROSA_COLOMBIANA,
   PRODUCTS.GIRASSOL,
-  PRODUCTS.LIRIO,
+  PRODUCTS.ROSA_NACIONAL,
 ];
 
 const carouselProducts = [
