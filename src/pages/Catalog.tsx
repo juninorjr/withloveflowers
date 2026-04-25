@@ -43,7 +43,7 @@ const Catalog = () => {
         <div className="text-center mb-16">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-3">Nosso Catálogo</h1>
           <p className="text-muted-foreground font-body max-w-lg mx-auto">
-            Escolha suas flores favoritas e monte o buquê perfeito. Personalize a quantidade como desejar.
+            Explore nosso catálogo e escolha o buquê perfeito para qualquer ocasião.
           </p>
         </div>
 
