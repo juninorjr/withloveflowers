@@ -56,7 +56,7 @@ const Catalog = () => {
             💐 Nossos Buquês
           </h2>
           <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
-            Descubra composições únicas feitas com carinho para cada ocasião.
+            Descubra composições únicas de rosas feitas com carinho para cada ocasião.
           </p>
           <ProductCarousel products={carouselProducts} />
         </section>
