@@ -61,10 +61,10 @@ const Catalog = () => {
         {/* Carousel de Produtos */}
         <section id="buques" className="mb-16 scroll-mt-24">
           <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
-            💐 Nossos Buquês
+            💐 Buquês de Rosas e Combinações
           </h2>
           <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
-            Descubra composições únicas de rosas feitas com carinho para cada ocasião.
+            Descubra combinações únicas de rosas com outras flores, criadas com carinho para cada ocasião.
           </p>
           <ProductCarousel products={carouselProducts} />
         </section>
