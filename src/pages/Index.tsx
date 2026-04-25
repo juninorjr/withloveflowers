@@ -14,7 +14,7 @@ const Index = () => {
 
       {/* Categories & Welcome */}
       <section className="py-10 md:py-12 bg-purple-light">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="font-display text-xl md:text-2xl font-semibold text-center text-foreground mb-6">
             O que você procura hoje?
           </h2>
