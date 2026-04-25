@@ -72,10 +72,10 @@ const Catalog = () => {
         {/* Buquês Diversos */}
         <section id="diversos" className="mb-16 scroll-mt-24">
           <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
-            🌸 Buquês Diversos
+            🌸 Combinações de Flores
           </h2>
           <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
-            Explore diferentes combinações de flores para todas as ocasiões.
+            Combinações de flores ideais para presentear em qualquer ocasião.
           </p>
           <ProductCarousel products={diversosProducts} />
         </section>
