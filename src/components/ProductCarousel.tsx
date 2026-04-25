@@ -70,7 +70,7 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
                   </button>
                 </div>
                 <div className="p-4 text-center flex flex-col flex-1 justify-center">
-                  <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.nome}</h3>
+                  <h3 className="font-display text-base font-semibold text-foreground leading-snug whitespace-pre-line">{item.nome}</h3>
                   <p className="font-body font-bold text-lg mt-2" style={{ color: "hsl(300, 37%, 47%)" }}>{item.preco}</p>
                 </div>
               </div>
