@@ -18,7 +18,7 @@ const HeroSlider = () => {
   }, [next]);
 
   return (
-    <section className="relative w-full mt-20 overflow-hidden h-[55vh] md:h-[70vh]">
+    <section className="relative w-full mt-20 overflow-hidden h-[75vh] md:h-[85vh]">
       {slides.map((img, i) => (
         <div
           key={i}
@@ -28,7 +28,7 @@ const HeroSlider = () => {
           <img
             src={img}
             alt={`Slide ${i + 1}`}
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-contain md:object-cover object-center"
           />
         </div>
       ))}
