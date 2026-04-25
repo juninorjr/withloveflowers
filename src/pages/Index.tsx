@@ -2,25 +2,9 @@ import { Link } from "react-router-dom";
 import { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
-import { useCart, cartItemId } from "@/contexts/CartContext";
-import produto4 from "@/assets/produto-4.jpg";
-import produto5 from "@/assets/produto-5.jpg";
-import produto6 from "@/assets/produto-6.jpg";
-import produto7 from "@/assets/produto-7.jpg";
-import produto8 from "@/assets/produto-8.jpg";
-import produto9 from "@/assets/produto-9.jpg";
-import produto10 from "@/assets/produto-10.webp";
-import produto11 from "@/assets/produto-11.jpg";
-import produto12 from "@/assets/produto-12.jpg";
-import produto13 from "@/assets/produto-13.jpg";
-import produto14 from "@/assets/produto-14.jpg";
-import produto15 from "@/assets/produto-15.jpg";
+import { useCart } from "@/contexts/CartContext";
+import { PRODUCTS, Product, parsePrice } from "@/data/products";
 import HeroSlider from "@/components/HeroSlider";
-import { getWhatsAppLink } from "@/config/whatsapp";
-
-import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
-
-const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.default);
 
 const Index = () => {
   return (
@@ -101,14 +85,14 @@ const Index = () => {
   );
 };
 
-const promoProducts = [
-  { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$65,00" },
-  { img: produto5, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "A partir de R$100,00" },
-  { img: produto6, name: "Buquê de Rosas Vermelhas e Margaridas", price: "A partir de R$150,00" },
-  { img: produto7, name: "Buquê Grande de Girassóis, Rosas e Flores do Campo", price: "A partir de R$415,00" },
-  { img: produto8, name: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis", price: "A partir de R$200,00" },
-  { img: produto9, name: "Buquê Pequeno de Lírios Brancos e Margaridas Pink", price: "A partir de R$90,00" },
-  { img: produto10, name: "Minibuquê de Girassol e Crisântemos Coloridos", price: "A partir de R$50,00" },
+const promoProducts: Product[] = [
+  PRODUCTS.PROMO_BUQUE_GIRASSOIS_ROSAS,
+  PRODUCTS.PROMO_BUQUE_ROSAS_CHUVA,
+  PRODUCTS.PROMO_BUQUE_ROSAS_MARGARIDAS,
+  PRODUCTS.PROMO_BUQUE_GRANDE,
+  PRODUCTS.PROMO_BUQUE_MEDIO,
+  PRODUCTS.PROMO_BUQUE_PEQUENO,
+  PRODUCTS.PROMO_MINIBUQUE,
 ];
 
 const PromoCarousel = () => {
@@ -152,8 +136,8 @@ const PromoCarousel = () => {
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex items-stretch">
             {promoProducts.map((item) => (
-              <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                <CarouselCard img={item.img} name={item.name} price={item.price} />
+              <div key={item.id} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
+                <CarouselCard product={item} />
               </div>
             ))}
           </div>
@@ -167,12 +151,12 @@ const PromoCarousel = () => {
   );
 };
 
-const presentesProducts = [
-  { img: produto11, name: "Luminária da Paixão Vermelha", price: "R$ 95,00" },
-  { img: produto12, name: "Luminária da Paixão Branca", price: "R$ 95,00" },
-  { img: produto13, name: "Coração Gourmet com Ferrero Rocher", price: "R$ 120,00" },
-  { img: produto14, name: "Box Branca - Rosas e Gaveta de Bombons", price: "R$ 100,00" },
-  { img: produto15, name: "Box Black Personalizada com Foto, Rosas e Ferrero Rocher", price: "R$ 120,00" },
+const presentesProducts: Product[] = [
+  PRODUCTS.PRES_LUMINARIA_VERMELHA,
+  PRODUCTS.PRES_LUMINARIA_BRANCA,
+  PRODUCTS.PRES_CORACAO_FERRERO,
+  PRODUCTS.PRES_BOX_BRANCA,
+  PRODUCTS.PRES_BOX_BLACK,
 ];
 
 const RosasCarousel = () => {
@@ -216,8 +200,8 @@ const RosasCarousel = () => {
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex items-stretch">
             {presentesProducts.map((item) => (
-              <div key={item.name} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                <CarouselCard img={item.img} name={item.name} price={item.price} />
+              <div key={item.id} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
+                <CarouselCard product={item} />
               </div>
             ))}
           </div>
@@ -227,29 +211,24 @@ const RosasCarousel = () => {
   );
 };
 
-function parsePrice(label: string): number {
-  const match = label.replace(/[^\d,.]/g, "").replace(",", ".");
-  return parseFloat(match) || 0;
-}
-
-const CarouselCard = ({ img, name, price }: { img: string; name: string; price: string }) => {
+const CarouselCard = ({ product }: { product: Product }) => {
   const { addItem } = useCart();
   return (
     <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
       <div className="aspect-[4/5] w-full overflow-hidden relative">
-        <img src={img} alt={name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <img src={product.imagem} alt={product.nome} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
         <button
-          onClick={() => addItem({ id: cartItemId(name), image: img, name, price: parsePrice(price), priceLabel: price })}
+          onClick={() => addItem({ id: product.id, image: product.imagem, name: product.nome, price: parsePrice(product.preco), priceLabel: product.preco })}
           className="absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-110"
           style={{ backgroundColor: "#a04ba0" }}
-          aria-label={`Adicionar ${name} ao carrinho`}
+          aria-label={`Adicionar ${product.nome} ao carrinho`}
         >
           <ShoppingCart size={18} />
         </button>
       </div>
       <div className="p-4 text-center flex-1 flex flex-col justify-between min-h-[120px]">
-        <h3 className="font-display text-base font-semibold text-foreground leading-snug">{name}</h3>
-        <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{price}</p>
+        <h3 className="font-display text-base font-semibold text-foreground leading-snug">{product.nome}</h3>
+        <p className="font-bold font-body text-lg mt-2" style={{ color: "#a04ba0" }}>{product.preco}</p>
       </div>
     </div>
   );
