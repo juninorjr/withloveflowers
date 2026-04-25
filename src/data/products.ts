@@ -81,6 +81,11 @@ export const PRODUCTS = {
   DIV_LIRIO_ROSA_MIX_M:       { id: "lirio_rosa_mix_m",       nome: "Buquê Mix de Flores Rosas - TAM: M",              preco: "R$21,00", imagem: getProductImage("lirio_rosa_mix_m") },
   DIV_GIRASSOL_MIX_MINI:      { id: "girassol_mix_mini",      nome: "Buquê Mix de Flores com Girassol - TAM: Mini",    preco: "R$21,00", imagem: getProductImage("girassol_mix_mini") },
   DIV_2LIRIOS_GIRASSOL_MIX_M: { id: "2lirios_girassol_mix_m", nome: "Buquê Mix de Flores com Girassol e Lírio - TAM: M", preco: "R$21,00", imagem: getProductImage("2lirios_girassol_mix_m") },
+  DIV_2LIRIOS_VERMELHO_MIX_P: { id: "2lirios_vermelho_mix_p", nome: "Buquê Mix de Flores com Lírios Vermelhos - TAM: P", preco: "R$21,00", imagem: getProductImage("2lirios_vermelho_mix_p") },
+  DIV_MIX_GIRASSOL_GERBERA:   { id: "mix_girassol_gerbera",   nome: "Buquê Mix de Flores com Gérbera e Girassol",     preco: "R$21,00", imagem: getProductImage("mix_girassol_gerbera") },
+  DIV_LIRIO_GIRASSOL_MIX_P:   { id: "lirio_girassol_mix_p",   nome: "Buquê Mix de Flores com Girassol e Lírios - TAM: P", preco: "R$21,00", imagem: getProductImage("lirio_girassol_mix_p") },
+  DIV_LIRIO_PINK_MIX_P:       { id: "lirio_pink_mix_p",       nome: "Buquê Mix de Flores - TAM: P",                    preco: "R$21,00", imagem: getProductImage("lirio_pink_mix_p") },
+  DIV_MIX_M:                  { id: "mix_m",                  nome: "Buquê Mix de Flores - TAM: M",                    preco: "R$21,00", imagem: getProductImage("mix_m") },
 
   // Presentes (Index)
   PRES_LUMINARIA_VERMELHA: { id: "pre-001", nome: "Luminária da Paixão Vermelha",                              preco: "R$ 95,00",  imagem: produto11 },
