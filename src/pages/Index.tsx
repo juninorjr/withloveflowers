@@ -23,7 +23,6 @@ const Index = () => {
               { label: "Buquês", to: "/catalogo#buques" },
               { label: "Rosas", to: "/catalogo#rosas" },
               { label: "Presentes", to: "/#presentes" },
-              { label: "Cestas", to: "/catalogo#diversos" },
             ].map((cat) => (
               <Link
                 key={cat.label}
