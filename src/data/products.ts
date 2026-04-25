@@ -75,12 +75,12 @@ export const PRODUCTS = {
   PROMO_BUQUE_PEQUENO:           { id: "pro-006", nome: "Buquê Pequeno de Lírios Brancos e Margaridas Pink",     preco: "A partir de R$90,00",  imagem: produto9 },
   PROMO_MINIBUQUE:               { id: "pro-007", nome: "Minibuquê de Girassol e Crisântemos Coloridos",         preco: "A partir de R$50,00",  imagem: produto10 },
 
-  // Diversos (catálogo)
-  DIV_ROMANTICO:        { id: "div-001", nome: "Buquê Romântico de Rosas e Astromélias",  preco: "A partir de R$ 75,00",  imagem: produto11 },
-  DIV_DELICADO_CAMPO:   { id: "div-002", nome: "Buquê Delicado de Flores do Campo",       preco: "A partir de R$ 60,00",  imagem: produto12 },
-  DIV_GERBERAS:         { id: "div-003", nome: "Buquê Especial de Gérberas Coloridas",    preco: "A partir de R$ 85,00",  imagem: produto13 },
-  DIV_LIRIOS_ROSAS:     { id: "div-004", nome: "Buquê Sofisticado de Lírios e Rosas",     preco: "A partir de R$ 120,00", imagem: produto14 },
-  DIV_MARGARIDAS_CRAVOS:{ id: "div-005", nome: "Buquê Encantado de Margaridas e Cravos",  preco: "A partir de R$ 70,00",  imagem: produto15 },
+  // Diversos (catálogo) — imagem resolvida automaticamente pelo id (src/assets/products/<id>.<ext>)
+  DIV_VERMELHO_MIX_MINI:      { id: "vermelho_mix_mini",      nome: "Buquê Mix de Flores Vermelhas - TAM: Mini",       preco: "R$21,00", imagem: getProductImage("vermelho_mix_mini") },
+  DIV_LIRIO_MIX_MINI:         { id: "lirio_mix_mini",         nome: "Buquê Mix de Flores com Lírio - TAM: Mini",       preco: "R$21,00", imagem: getProductImage("lirio_mix_mini") },
+  DIV_LIRIO_ROSA_MIX_M:       { id: "lirio_rosa_mix_m",       nome: "Buquê Mix de Flores Rosas - TAM: M",              preco: "R$21,00", imagem: getProductImage("lirio_rosa_mix_m") },
+  DIV_GIRASSOL_MIX_MINI:      { id: "girassol_mix_mini",      nome: "Buquê Mix de Flores com Girassol - TAM: Mini",    preco: "R$21,00", imagem: getProductImage("girassol_mix_mini") },
+  DIV_2LIRIOS_GIRASSOL_MIX_M: { id: "2lirios_girassol_mix_m", nome: "Buquê Mix de Flores com Girassol e Lírio - TAM: M", preco: "R$21,00", imagem: getProductImage("2lirios_girassol_mix_m") },
 
   // Presentes (Index)
   PRES_LUMINARIA_VERMELHA: { id: "pre-001", nome: "Luminária da Paixão Vermelha",                              preco: "R$ 95,00",  imagem: produto11 },
