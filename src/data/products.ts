@@ -57,14 +57,14 @@ export const PRODUCTS = {
   GIRASSOL:        { id: "girassol",        nome: "Girassol",        preco: "R$18,00", imagem: getProductImage("girassol") },
   ROSA_NACIONAL:   { id: "rosa_nacional",   nome: "Rosa Nacional",   preco: "R$17,00", imagem: getProductImage("rosa_nacional") },
 
-  // Buquês (catálogo)
-  BUQUE_GIRASSOIS_ROSAS:        { id: "buq-001", nome: "Buquê de Girassóis e Rosas Vermelhas",                   preco: "A partir de R$ 65,00",  imagem: produto4 },
-  BUQUE_ROSAS_CHUVA_PRATA:      { id: "buq-002", nome: "Buquê de Rosas Vermelhas com Chuva-de-Prata",            preco: "A partir de R$ 100,00", imagem: produto5 },
-  BUQUE_ROSAS_MARGARIDAS:       { id: "buq-003", nome: "Buquê de Rosas Vermelhas e Margaridas",                  preco: "A partir de R$ 150,00", imagem: produto6 },
-  BUQUE_GRANDE_GIRASSOIS:       { id: "buq-004", nome: "Buquê Grande de Girassóis, Rosas e Flores do Campo",     preco: "A partir de R$ 415,00", imagem: produto7 },
-  BUQUE_MEDIO_LIRIOS:           { id: "buq-005", nome: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis",          preco: "A partir de R$ 200,00", imagem: produto8 },
-  BUQUE_PEQUENO_LIRIOS:         { id: "buq-006", nome: "Buquê Pequeno de Lírios Brancos e Margaridas Pink",      preco: "A partir de R$ 90,00",  imagem: produto9 },
-  MINIBUQUE_GIRASSOL:           { id: "buq-007", nome: "Minibuquê de Girassol e Crisântemos Coloridos",          preco: "A partir de R$ 50,00",  imagem: produto10 },
+  // Buquês (catálogo) — imagem resolvida automaticamente pelo id (src/assets/products/<id>.<ext>)
+  BUQUE_ROSA_GYPSO:        { id: "rosa_gypso",         nome: "Buquê de Rosas Colombianas e Gypso",         preco: "R$21,00", imagem: getProductImage("rosa_gypso") },
+  BUQUE_3ROSAS_3GIRASSOIS: { id: "3rosas_3girassois",  nome: "Buquê de Rosas e Girassóis",                 preco: "R$21,00", imagem: getProductImage("3rosas_3girassois") },
+  BUQUE_2ROSAS_MIX_P:      { id: "2rosas_mix_P",       nome: "Buquê Mix de Flores e Duas Rosas - TAM: P",  preco: "R$21,00", imagem: getProductImage("2rosas_mix_P") },
+  BUQUE_7ROSAS_5GIRASSOIS: { id: "7rosas_5girasois",   nome: "Buquê de Rosas e Girassóis",                 preco: "R$21,00", imagem: getProductImage("7rosas_5girasois") },
+  BUQUE_2ROSAS_MIX_MINI:   { id: "2rosas_mix_mini",    nome: "Buquê Mix de Flores e Duas Rosas - TAM: Mini", preco: "R$21,00", imagem: getProductImage("2rosas_mix_mini") },
+  BUQUE_PINK_MIX_MINI:     { id: "pink_mix_mini",      nome: "Buquê Mix de Flores TAM: Mini",              preco: "R$21,00", imagem: getProductImage("pink_mix_mini") },
+  BUQUE_ROSAS_ASTER:       { id: "rosas_aster",        nome: "Buquê de Rosas com Margaridas Aster",        preco: "R$21,00", imagem: getProductImage("rosas_aster") },
 
   // Variantes "promo" do Index (mesmas imagens, preços ligeiramente diferentes)
   PROMO_BUQUE_GIRASSOIS_ROSAS:   { id: "pro-001", nome: "Buquê de Girassóis e Rosas Vermelhas",                  preco: "A partir de R$65,00",  imagem: produto4 },
