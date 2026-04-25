@@ -62,7 +62,7 @@ export const PRODUCTS = {
   BUQUE_3ROSAS_3GIRASSOIS: { id: "3rosas_3girassois",  nome: "Buquê de Rosas e Girassóis",                 preco: "R$21,00", imagem: getProductImage("3rosas_3girassois") },
   BUQUE_2ROSAS_MIX_P:      { id: "2rosas_mix_P",       nome: "Buquê Mix de Flores e Duas Rosas - TAM: P",  preco: "R$21,00", imagem: getProductImage("2rosas_mix_P") },
   BUQUE_7ROSAS_5GIRASSOIS: { id: "7rosas_5girasois",   nome: "Buquê de Rosas e Girassóis",                 preco: "R$21,00", imagem: getProductImage("7rosas_5girasois") },
-  BUQUE_2ROSAS_MIX_MINI:   { id: "2rosas_mix_mini",    nome: "Buquê Mix de Flores e Duas Rosas - TAM: Mini", preco: "R$21,00", imagem: getProductImage("2rosas_mix_mini") },
+  BUQUE_2ROSAS_MIX_MINI:   { id: "2rosas_mix_mini",    nome: "Buquê Mix de Flores e Duas Rosas - TAM: P", preco: "R$21,00", imagem: getProductImage("2rosas_mix_mini") },
   BUQUE_PINK_MIX_MINI:     { id: "pink_mix_mini",      nome: "Buquê Mix de Flores TAM: Mini",              preco: "R$21,00", imagem: getProductImage("pink_mix_mini") },
   BUQUE_ROSAS_ASTER:       { id: "rosas_aster",        nome: "Buquê de Rosas com Margaridas Aster",        preco: "R$21,00", imagem: getProductImage("rosas_aster") },
 
