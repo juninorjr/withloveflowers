@@ -1,52 +1,31 @@
-import ProductCard from "@/components/ProductCard";
 import ProductCarousel from "@/components/ProductCarousel";
-import { getWhatsAppLink } from "@/config/whatsapp";
-import rosaColombiana from "@/assets/rosa-colombiana.jpg";
-import rosaSolitaria from "@/assets/rosa-solitaria.jpg";
-import girassol from "@/assets/girassol.jpg";
-import bouquetMini from "@/assets/bouquet-mini.jpg";
-import bouquetMedio from "@/assets/bouquet-medio.jpg";
-import bouquetGrande from "@/assets/bouquet-grande.jpg";
-import lirio from "@/assets/lirio.jpg";
-import produto4 from "@/assets/produto-4.jpg";
-import produto5 from "@/assets/produto-5.jpg";
-import produto6 from "@/assets/produto-6.jpg";
-import produto7 from "@/assets/produto-7.jpg";
-import produto8 from "@/assets/produto-8.jpg";
-import produto9 from "@/assets/produto-9.jpg";
-import produto10 from "@/assets/produto-10.webp";
-import produto11 from "@/assets/produto-11.jpg";
-import produto12 from "@/assets/produto-12.jpg";
-import produto13 from "@/assets/produto-13.jpg";
-import produto14 from "@/assets/produto-14.jpg";
-import produto15 from "@/assets/produto-15.jpg";
-
-import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
+import { getWhatsAppLink, WHATSAPP_MESSAGES } from "@/config/whatsapp";
+import { PRODUCTS } from "@/data/products";
 
 const WHATSAPP_LINK = getWhatsAppLink(WHATSAPP_MESSAGES.bouquet);
 
 const solitarioProducts = [
-  { img: rosaColombiana, name: "Rosa Colombiana", price: "R$21,00" },
-  { img: girassol, name: "Girassol", price: "R$17,00" },
-  { img: lirio, name: "Lírio", price: "R$35,00" },
+  PRODUCTS.ROSA_COLOMBIANA,
+  PRODUCTS.GIRASSOL,
+  PRODUCTS.LIRIO,
 ];
 
 const carouselProducts = [
-  { img: produto4, name: "Buquê de Girassóis e Rosas Vermelhas", price: "A partir de R$ 65,00" },
-  { img: produto5, name: "Buquê de Rosas Vermelhas com Chuva-de-Prata", price: "A partir de R$ 100,00" },
-  { img: produto6, name: "Buquê de Rosas Vermelhas e Margaridas", price: "A partir de R$ 150,00" },
-  { img: produto7, name: "Buquê Grande de Girassóis, Rosas e Flores do Campo", price: "A partir de R$ 415,00" },
-  { img: produto8, name: "Buquê Médio de Lírios Cor-de-Rosa e Girassóis", price: "A partir de R$ 200,00" },
-  { img: produto9, name: "Buquê Pequeno de Lírios Brancos e Margaridas Pink", price: "A partir de R$ 90,00" },
-  { img: produto10, name: "Minibuquê de Girassol e Crisântemos Coloridos", price: "A partir de R$ 50,00" },
+  PRODUCTS.BUQUE_GIRASSOIS_ROSAS,
+  PRODUCTS.BUQUE_ROSAS_CHUVA_PRATA,
+  PRODUCTS.BUQUE_ROSAS_MARGARIDAS,
+  PRODUCTS.BUQUE_GRANDE_GIRASSOIS,
+  PRODUCTS.BUQUE_MEDIO_LIRIOS,
+  PRODUCTS.BUQUE_PEQUENO_LIRIOS,
+  PRODUCTS.MINIBUQUE_GIRASSOL,
 ];
 
 const diversosProducts = [
-  { img: produto11, name: "Buquê Romântico de Rosas e Astromélias", price: "A partir de R$ 75,00" },
-  { img: produto12, name: "Buquê Delicado de Flores do Campo", price: "A partir de R$ 60,00" },
-  { img: produto13, name: "Buquê Especial de Gérberas Coloridas", price: "A partir de R$ 85,00" },
-  { img: produto14, name: "Buquê Sofisticado de Lírios e Rosas", price: "A partir de R$ 120,00" },
-  { img: produto15, name: "Buquê Encantado de Margaridas e Cravos", price: "A partir de R$ 70,00" },
+  PRODUCTS.DIV_ROMANTICO,
+  PRODUCTS.DIV_DELICADO_CAMPO,
+  PRODUCTS.DIV_GERBERAS,
+  PRODUCTS.DIV_LIRIOS_ROSAS,
+  PRODUCTS.DIV_MARGARIDAS_CRAVOS,
 ];
 
 const Catalog = () => {

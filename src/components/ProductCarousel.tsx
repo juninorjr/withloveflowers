@@ -1,21 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
-import { useCart, cartItemId } from "@/contexts/CartContext";
-
-interface ProductSlide {
-  img: string;
-  name: string;
-  price: string;
-}
+import { useCart } from "@/contexts/CartContext";
+import { Product, parsePrice } from "@/data/products";
 
 interface ProductCarouselProps {
-  products: ProductSlide[];
-}
-
-function parsePrice(label: string): number {
-  const match = label.replace(/[^\d,.]/g, "").replace(",", ".");
-  return parseFloat(match) || 0;
+  products: Product[];
 }
 
 const ProductCarousel = ({ products }: ProductCarouselProps) => {
@@ -62,26 +52,26 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
 
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex">
-          {products.map((item, i) => (
+          {products.map((item) => (
             <div
-              key={i}
+              key={item.id}
               className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_25%] px-2"
             >
               <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border h-full flex flex-col">
                 <div className="aspect-square bg-white flex items-center justify-center overflow-hidden relative">
-                  <img src={item.img} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
+                  <img src={item.imagem} alt={item.nome} className="w-full h-full object-cover" loading="lazy" />
                   <button
-                    onClick={() => addItem({ id: cartItemId(item.name), image: item.img, name: item.name, price: parsePrice(item.price), priceLabel: item.price })}
+                    onClick={() => addItem({ id: item.id, image: item.imagem, name: item.nome, price: parsePrice(item.preco), priceLabel: item.preco })}
                     className="absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-110"
                     style={{ backgroundColor: "#a04ba0" }}
-                    aria-label={`Adicionar ${item.name} ao carrinho`}
+                    aria-label={`Adicionar ${item.nome} ao carrinho`}
                   >
                     <ShoppingCart size={18} />
                   </button>
                 </div>
                 <div className="p-4 text-center flex flex-col flex-1 justify-center">
-                  <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.name}</h3>
-                  <p className="font-body font-bold text-lg mt-2" style={{ color: "hsl(300, 37%, 47%)" }}>{item.price}</p>
+                  <h3 className="font-display text-base font-semibold text-foreground leading-snug">{item.nome}</h3>
+                  <p className="font-body font-bold text-lg mt-2" style={{ color: "hsl(300, 37%, 47%)" }}>{item.preco}</p>
                 </div>
               </div>
             </div>
