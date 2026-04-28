@@ -148,12 +148,13 @@ const PromoCarousel = () => {
   );
 };
 
+// Para marcar um item como esgotado, defina `disponivel: false` no objeto.
 const presentesProducts: Product[] = [
-  PRODUCTS.PRES_LUMINARIA_VERMELHA,
-  PRODUCTS.PRES_LUMINARIA_BRANCA,
-  PRODUCTS.PRES_CORACAO_FERRERO,
-  PRODUCTS.PRES_BOX_BRANCA,
-  PRODUCTS.PRES_BOX_BLACK,
+  { ...PRODUCTS.PRES_LUMINARIA_VERMELHA },
+  { ...PRODUCTS.PRES_LUMINARIA_BRANCA },
+  { ...PRODUCTS.PRES_CORACAO_FERRERO },
+  { ...PRODUCTS.PRES_BOX_BRANCA },
+  { ...PRODUCTS.PRES_BOX_BLACK },
 ];
 
 const RosasCarousel = () => {
