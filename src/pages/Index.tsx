@@ -198,7 +198,7 @@ const RosasCarousel = () => {
           <div className="flex items-stretch">
             {presentesProducts.map((item) => (
               <div key={item.id} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                <CarouselCard product={item} />
+                <CarouselCard product={item} soldOut />
               </div>
             ))}
           </div>
@@ -208,17 +208,28 @@ const RosasCarousel = () => {
   );
 };
 
-const CarouselCard = ({ product }: { product: Product }) => {
+const CarouselCard = ({ product, soldOut = false }: { product: Product; soldOut?: boolean }) => {
   const { addItem } = useCart();
   return (
     <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
       <div className="aspect-[4/5] w-full overflow-hidden relative">
-        <img src={product.imagem} alt={product.nome} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <img src={product.imagem} alt={product.nome} className={`w-full h-full object-cover transition-transform duration-500 ${soldOut ? "grayscale-[30%]" : "hover:scale-105"}`} loading="lazy" />
+        {soldOut && (
+          <>
+            <div className="absolute inset-0 bg-black/25 pointer-events-none" aria-hidden="true" />
+            <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 -rotate-6 pointer-events-none">
+              <div className="bg-black/70 backdrop-blur-sm text-white text-center py-2 shadow-lg border-y border-white/20">
+                <span className="font-display text-lg md:text-xl font-bold tracking-[0.2em] uppercase">Indisponível</span>
+              </div>
+            </div>
+          </>
+        )}
         <button
-          onClick={() => addItem({ id: product.id, image: product.imagem, name: product.nome, price: parsePrice(product.preco), priceLabel: product.preco })}
-          className="absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-110"
+          onClick={() => { if (!soldOut) addItem({ id: product.id, image: product.imagem, name: product.nome, price: parsePrice(product.preco), priceLabel: product.preco }); }}
+          disabled={soldOut}
+          className={`absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform ${soldOut ? "opacity-50 cursor-not-allowed" : "hover:scale-110"}`}
           style={{ backgroundColor: "#a04ba0" }}
-          aria-label={`Adicionar ${product.nome} ao carrinho`}
+          aria-label={soldOut ? `${product.nome} indisponível` : `Adicionar ${product.nome} ao carrinho`}
         >
           <ShoppingCart size={18} />
         </button>
