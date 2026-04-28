@@ -49,6 +49,7 @@ export interface Product {
   nome: string;        // visível
   preco: string;       // visível (string formatada para exibição)
   imagem: string;      // visível
+  disponivel?: boolean; // se false, exibe faixa "Esgotado" e desativa o botão
 }
 
 export const PRODUCTS = {
