@@ -148,12 +148,13 @@ const PromoCarousel = () => {
   );
 };
 
+// Para marcar um item como esgotado, defina `disponivel: false` no objeto.
 const presentesProducts: Product[] = [
-  PRODUCTS.PRES_LUMINARIA_VERMELHA,
-  PRODUCTS.PRES_LUMINARIA_BRANCA,
-  PRODUCTS.PRES_CORACAO_FERRERO,
-  PRODUCTS.PRES_BOX_BRANCA,
-  PRODUCTS.PRES_BOX_BLACK,
+  { ...PRODUCTS.PRES_LUMINARIA_VERMELHA },
+  { ...PRODUCTS.PRES_LUMINARIA_BRANCA },
+  { ...PRODUCTS.PRES_CORACAO_FERRERO },
+  { ...PRODUCTS.PRES_BOX_BRANCA },
+  { ...PRODUCTS.PRES_BOX_BLACK },
 ];
 
 const RosasCarousel = () => {
@@ -210,15 +211,30 @@ const RosasCarousel = () => {
 
 const CarouselCard = ({ product }: { product: Product }) => {
   const { addItem } = useCart();
+  const esgotado = product.disponivel === false;
   return (
     <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
       <div className="aspect-[4/5] w-full overflow-hidden relative">
-        <img src={product.imagem} alt={product.nome} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <img
+          src={product.imagem}
+          alt={product.nome}
+          className={`w-full h-full object-cover transition-transform duration-500 ${esgotado ? "grayscale opacity-70" : "hover:scale-105"}`}
+          loading="lazy"
+        />
+        {esgotado && (
+          <div className="absolute top-4 -left-12 w-44 rotate-[-35deg] bg-[#7a2a7a] text-white text-center font-display font-bold text-sm tracking-wider py-1 shadow-md uppercase">
+            Esgotado
+          </div>
+        )}
         <button
-          onClick={() => addItem({ id: product.id, image: product.imagem, name: product.nome, price: parsePrice(product.preco), priceLabel: product.preco })}
-          className="absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-110"
-          style={{ backgroundColor: "#a04ba0" }}
-          aria-label={`Adicionar ${product.nome} ao carrinho`}
+          onClick={() => {
+            if (esgotado) return;
+            addItem({ id: product.id, image: product.imagem, name: product.nome, price: parsePrice(product.preco), priceLabel: product.preco });
+          }}
+          disabled={esgotado}
+          className={`absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform ${esgotado ? "opacity-50 cursor-not-allowed" : "hover:scale-110"}`}
+          style={{ backgroundColor: esgotado ? "#9ca3af" : "#a04ba0" }}
+          aria-label={esgotado ? `${product.nome} esgotado` : `Adicionar ${product.nome} ao carrinho`}
         >
           <ShoppingCart size={18} />
         </button>
