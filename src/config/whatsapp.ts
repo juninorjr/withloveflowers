@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "5519997957981";
+export const WHATSAPP_NUMBER = "5519981491814";
 
 export const WHATSAPP_MESSAGES = {
   default: "Olá, vim pelo site da WithLoveFlowers e gostaria de fazer um pedido 🌸",
