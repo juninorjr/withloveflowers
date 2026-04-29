@@ -66,7 +66,7 @@ const CartDrawer = () => {
       <DialogContent className="max-w-sm rounded-2xl text-center" style={{ backgroundColor: "#fdf7fd" }}>
         <DialogHeader>
           <DialogTitle className="font-display text-lg" style={{ color: "#a04ba0" }}>
-            Informação importante
+            Informação importante🌷
           </DialogTitle>
           <DialogDescription className="font-body text-sm text-foreground/80 leading-relaxed pt-2">
             Os buquês estão sujeitos a alterações conforme a disponibilidade das flores. Também é possível personalizar o pedido. Caso deseje alguma alteração, informe no campo Observações do carrinho.
