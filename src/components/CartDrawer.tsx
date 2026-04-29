@@ -227,6 +227,7 @@ const CartDrawer = () => {
         )}
       </SheetContent>
     </Sheet>
+    </>
   );
 };
 
