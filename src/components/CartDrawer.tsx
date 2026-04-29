@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { useCart } from "@/contexts/CartContext";
 import { Minus, Plus, Trash2, ShoppingBag, Info } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/config/whatsapp";
@@ -29,6 +30,11 @@ const CartDrawer = () => {
   const [clientName, setClientName] = useState("");
   const [observations, setObservations] = useState("");
   const [deliveryMode, setDeliveryMode] = useState<DeliveryOptionId | "">("");
+  const [showInfoPopup, setShowInfoPopup] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) setShowInfoPopup(true);
+  }, [isOpen]);
 
   const selectedDelivery = DELIVERY_OPTIONS.find((o) => o.id === deliveryMode);
   const deliveryFee = selectedDelivery?.fee ?? 0;
@@ -55,6 +61,28 @@ const CartDrawer = () => {
   };
 
   return (
+    <>
+    <Dialog open={showInfoPopup && isOpen} onOpenChange={setShowInfoPopup}>
+      <DialogContent className="max-w-sm rounded-2xl text-center" style={{ backgroundColor: "#fdf7fd" }}>
+        <DialogHeader>
+          <DialogTitle className="font-display text-lg" style={{ color: "#a04ba0" }}>
+            Informação importante
+          </DialogTitle>
+          <DialogDescription className="font-body text-sm text-foreground/80 leading-relaxed pt-2">
+            Os buquês estão sujeitos a alterações conforme a disponibilidade das flores. Também é possível personalizar o pedido. Caso deseje alguma alteração, informe no campo Observações do carrinho.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter className="sm:justify-center">
+          <button
+            onClick={() => setShowInfoPopup(false)}
+            className="px-6 py-2.5 rounded-full font-body font-bold text-sm text-white transition-opacity hover:opacity-90"
+            style={{ backgroundColor: "#a04ba0" }}
+          >
+            Entendi
+          </button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetContent className="w-full sm:max-w-md flex flex-col">
         <SheetHeader>
@@ -199,6 +227,7 @@ const CartDrawer = () => {
         )}
       </SheetContent>
     </Sheet>
+    </>
   );
 };
 
