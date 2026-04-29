@@ -30,6 +30,11 @@ const CartDrawer = () => {
   const [clientName, setClientName] = useState("");
   const [observations, setObservations] = useState("");
   const [deliveryMode, setDeliveryMode] = useState<DeliveryOptionId | "">("");
+  const [showInfoPopup, setShowInfoPopup] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) setShowInfoPopup(true);
+  }, [isOpen]);
 
   const selectedDelivery = DELIVERY_OPTIONS.find((o) => o.id === deliveryMode);
   const deliveryFee = selectedDelivery?.fee ?? 0;
