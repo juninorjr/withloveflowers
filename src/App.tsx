@@ -8,7 +8,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import CartDrawer from "./components/CartDrawer";
-import FirstAddPopup from "./components/FirstAddPopup";
 import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import Catalog from "./pages/Catalog";
@@ -27,7 +26,6 @@ const App = () => (
         <ScrollToTop />
         <Navbar />
         <CartDrawer />
-        <FirstAddPopup />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/catalogo" element={<Catalog />} />
