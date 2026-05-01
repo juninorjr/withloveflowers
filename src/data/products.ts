@@ -53,9 +53,9 @@ export interface Product {
 
 export const PRODUCTS = {
   // Botão Solitário — imagem resolvida automaticamente pelo id (src/assets/products/<id>.<ext>)
-  ROSA_COLOMBIANA: { id: "rosa_colombiana", nome: "Rosa Colombiana", preco: "R$25,00", imagem: getProductImage("rosa_colombiana") },
-  GIRASSOL:        { id: "girassol",        nome: "Girassol",        preco: "R$18,00", imagem: getProductImage("girassol") },
-  ROSA_NACIONAL:   { id: "rosa_nacional",   nome: "Rosa Nacional",   preco: "R$17,00", imagem: getProductImage("rosa_nacional") },
+  ROSA_COLOMBIANA: { id: "rosa_colombiana", nome: "Rosa Colombiana", preco: "R$30,00", imagem: getProductImage("rosa_colombiana") },
+  GIRASSOL:        { id: "girassol",        nome: "Girassol",        preco: "R$25,00", imagem: getProductImage("girassol") },
+  ROSA_NACIONAL:   { id: "rosa_nacional",   nome: "Rosa Nacional",   preco: "R$25,00", imagem: getProductImage("rosa_nacional") },
 
   // Buquês (catálogo) — imagem resolvida automaticamente pelo id (src/assets/products/<id>.<ext>)
   BUQUE_ROSA_GYPSO:        { id: "rosa_gypso",         nome: "Buquê de Rosas Colombianas e Gypso",         preco: "R$21,00", imagem: getProductImage("rosa_gypso") },
