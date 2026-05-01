@@ -76,6 +76,16 @@ const ProductCarousel = ({ products, customizable = false }: ProductCarouselProp
                 <div className="p-4 text-center flex flex-col flex-1 justify-center">
                   <h3 className="font-display text-base font-semibold text-foreground leading-snug whitespace-pre-line">{item.nome}</h3>
                   <p className="font-body font-bold text-lg mt-2" style={{ color: "hsl(300, 37%, 47%)" }}>{item.preco}</p>
+                  {customizable && (
+                    <button
+                      onClick={() => setCustomizingProduct(item)}
+                      className="mt-3 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full font-body font-semibold text-xs text-white transition-opacity hover:opacity-90"
+                      style={{ backgroundColor: "#a04ba0" }}
+                    >
+                      <Sparkles size={14} />
+                      Personalizar buquê
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
