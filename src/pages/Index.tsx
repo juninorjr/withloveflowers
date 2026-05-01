@@ -5,6 +5,7 @@ import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight, ShoppingCart } 
 import { useCart } from "@/contexts/CartContext";
 import { PRODUCTS, Product, parsePrice } from "@/data/products";
 import HeroSlider from "@/components/HeroSlider";
+import SmartImage from "@/components/SmartImage";
 
 const Index = () => {
   return (
@@ -134,7 +135,7 @@ const PromoCarousel = () => {
           <div className="flex items-stretch">
             {promoProducts.map((item) => (
               <div key={item.id} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                <CarouselCard product={item} />
+                <CarouselCard product={item} priority />
               </div>
             ))}
           </div>
@@ -208,12 +209,19 @@ const RosasCarousel = () => {
   );
 };
 
-const CarouselCard = ({ product, soldOut = false }: { product: Product; soldOut?: boolean }) => {
+const CarouselCard = ({ product, soldOut = false, priority = false }: { product: Product; soldOut?: boolean; priority?: boolean }) => {
   const { addItem } = useCart();
   return (
     <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
       <div className="aspect-[4/5] w-full overflow-hidden relative">
-        <img src={product.imagem} alt={product.nome} className={`w-full h-full object-cover transition-transform duration-500 ${soldOut ? "grayscale-[30%]" : "hover:scale-105"}`} loading="lazy" />
+        <SmartImage
+          src={product.imagem}
+          alt={product.nome}
+          priority={priority}
+          width={900}
+          height={1125}
+          className={`object-cover transition-transform duration-500 ${soldOut ? "grayscale-[30%]" : "hover:scale-105"}`}
+        />
         {soldOut && (
           <>
             <div className="absolute inset-0 bg-black/25 pointer-events-none" aria-hidden="true" />
