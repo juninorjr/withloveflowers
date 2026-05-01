@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ShoppingCart, Check } from "lucide-react";
 import { useCart, cartItemId } from "@/contexts/CartContext";
+import SmartImage from "@/components/SmartImage";
 
 interface ProductCardProps {
   image: string;

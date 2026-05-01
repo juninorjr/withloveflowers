@@ -135,7 +135,7 @@ const PromoCarousel = () => {
           <div className="flex items-stretch">
             {promoProducts.map((item) => (
               <div key={item.id} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                <CarouselCard product={item} />
+                <CarouselCard product={item} priority />
               </div>
             ))}
           </div>
