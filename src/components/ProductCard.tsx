@@ -37,12 +37,14 @@ const ProductCard = ({ image, name, price, oldPrice, description }: ProductCardP
   return (
     <div className="group bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border">
       <div className="aspect-square overflow-hidden relative">
-        <img
+        <SmartImage
           src={image}
           alt={name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
+          width={900}
+          height={900}
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
+
         <button
           onClick={handleAdd}
           key={popKey}
