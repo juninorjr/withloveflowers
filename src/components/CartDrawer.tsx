@@ -44,7 +44,7 @@ const CartDrawer = () => {
     if (!c || (c.rosas === 0 && c.girassois === 0)) return null;
     const parts: string[] = [];
     if (c.rosas > 0) parts.push(`${c.rosas} rosa${c.rosas > 1 ? "s" : ""}`);
-    if (c.girassois > 0) parts.push(`${c.girassois} girassol${c.girassois > 1 ? "es" : ""}`);
+    if (c.girassois > 0) parts.push(`${c.girassois} girassol${c.girassois > 1 ? "óis" : ""}`);
     return parts.join(" e ");
   };
 
