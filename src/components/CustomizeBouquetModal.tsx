@@ -36,7 +36,7 @@ const CustomizeBouquetModal = ({ product, open, onOpenChange }: CustomizeBouquet
   const handleAdd = () => {
     const compositionLabel =
       rosas > 0 || girassois > 0
-        ? ` (+${rosas > 0 ? `${rosas} rosa${rosas > 1 ? "s" : ""}` : ""}${rosas > 0 && girassois > 0 ? " e " : ""}${girassois > 0 ? `${girassois} girassol${girassois > 1 ? "es" : ""}` : ""})`
+        ? ` (+${rosas > 0 ? `${rosas} rosa${rosas > 1 ? "s" : ""}` : ""}${rosas > 0 && girassois > 0 ? " e " : ""}${girassois > 0 ? `${girassois} girassol${girassois > 1 ? "óis" : ""}` : ""})`
         : "";
 
     addItem({
