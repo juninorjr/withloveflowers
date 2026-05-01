@@ -1,5 +1,10 @@
 import { createContext, useContext, useState, useCallback, ReactNode } from "react";
 
+export interface CartComposition {
+  rosas: number;
+  girassois: number;
+}
+
 export interface CartItem {
   id: string;
   image: string;
@@ -7,6 +12,7 @@ export interface CartItem {
   price: number;
   priceLabel: string;
   quantity: number;
+  composition?: CartComposition;
 }
 
 interface CartContextType {
