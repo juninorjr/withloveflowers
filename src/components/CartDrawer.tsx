@@ -40,8 +40,20 @@ const CartDrawer = () => {
   const deliveryFee = selectedDelivery?.fee ?? 0;
   const grandTotal = totalPrice + deliveryFee;
 
+  const formatComposition = (c?: { rosas: number; girassois: number }) => {
+    if (!c || (c.rosas === 0 && c.girassois === 0)) return null;
+    const parts: string[] = [];
+    if (c.rosas > 0) parts.push(`${c.rosas} rosa${c.rosas > 1 ? "s" : ""}`);
+    if (c.girassois > 0) parts.push(`${c.girassois} girassol${c.girassois > 1 ? "es" : ""}`);
+    return parts.join(" e ");
+  };
+
   const getFinalizeLink = () => {
-    const lines = items.map((i) => `${i.name} x${i.quantity} — ${i.priceLabel}`);
+    const lines = items.map((i) => {
+      const comp = formatComposition(i.composition);
+      const compStr = comp ? ` — ${comp}` : "";
+      return `${i.name}${compStr} x${i.quantity} — ${i.priceLabel}`;
+    });
     const deliveryLabel = selectedDelivery
       ? `${selectedDelivery.label}${selectedDelivery.fee > 0 ? ` — ${formatBRL(selectedDelivery.fee)}` : ""}`
       : "(não informado)";
