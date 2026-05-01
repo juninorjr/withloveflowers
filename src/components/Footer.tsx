@@ -1,5 +1,5 @@
 import { Heart, Instagram, MapPin } from "lucide-react";
-import logo from "@/assets/logo-2.png";
+import logo from "@/assets/logo-2.webp";
 import { getWhatsAppLink } from "@/config/whatsapp";
 
 import { WHATSAPP_MESSAGES } from "@/config/whatsapp";
