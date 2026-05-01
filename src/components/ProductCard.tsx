@@ -64,10 +64,10 @@ const ProductCard = ({ image, name, price, oldPrice, description }: ProductCardP
           </div>
         )}
       </div>
-      <div className="p-4">
+      <div className="p-4 text-center">
         <h3 className="font-display text-lg font-semibold text-foreground">{name}</h3>
         {description && <p className="text-muted-foreground text-sm font-body mt-1">{description}</p>}
-        <div className="mt-2 flex items-center gap-2">
+        <div className="mt-2 flex items-center justify-center gap-2">
           {oldPrice && (
             <span className="text-muted-foreground line-through text-sm font-body">{oldPrice}</span>
           )}
