@@ -66,7 +66,7 @@ const Catalog = () => {
           <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
             Descubra combinações únicas de rosas com outras flores, criadas com carinho para cada ocasião.
           </p>
-          <ProductCarousel products={carouselProducts} />
+          <ProductCarousel products={carouselProducts} customizable />
         </section>
 
         {/* Buquês Diversos */}
