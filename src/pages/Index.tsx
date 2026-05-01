@@ -5,6 +5,7 @@ import { Heart, Truck, Flower2, Star, ChevronLeft, ChevronRight, ShoppingCart } 
 import { useCart } from "@/contexts/CartContext";
 import { PRODUCTS, Product, parsePrice } from "@/data/products";
 import HeroSlider from "@/components/HeroSlider";
+import SmartImage from "@/components/SmartImage";
 
 const Index = () => {
   return (
