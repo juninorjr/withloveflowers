@@ -3,6 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Product, parsePrice } from "@/data/products";
+import SmartImage from "@/components/SmartImage";
 
 interface ProductCarouselProps {
   products: Product[];
@@ -59,7 +60,7 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
             >
               <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-border h-full flex flex-col">
                 <div className="aspect-square bg-white flex items-center justify-center overflow-hidden relative">
-                  <img src={item.imagem} alt={item.nome} className="w-full h-full object-cover" loading="lazy" />
+                  <SmartImage src={item.imagem} alt={item.nome} width={900} height={900} className="object-cover" />
                   <button
                     onClick={() => addItem({ id: item.id, image: item.imagem, name: item.nome, price: parsePrice(item.preco), priceLabel: item.preco })}
                     className="absolute bottom-3 right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-110"
