@@ -58,7 +58,7 @@ export const PRODUCTS = {
   ROSA_NACIONAL:   { id: "rosa_nacional",   nome: "Rosa Nacional",   preco: "R$25,00", imagem: getProductImage("rosa_nacional") },
 
   // Buquês (catálogo) — imagem resolvida automaticamente pelo id (src/assets/products/<id>.<ext>)
-  BUQUE_ROSA_GYPSO:        { id: "rosa_gypso",         nome: "Buquê de Rosas Colombianas e Gypso",         preco: "R$500,00", imagem: getProductImage("rosa_gypso") },
+  BUQUE_ROSA_GYPSO:        { id: "rosa_gypso",         nome: "Buquê 30 Rosas Nacionais e Gypso",         preco: "R$500,00", imagem: getProductImage("rosa_gypso") },
   BUQUE_3ROSAS_3GIRASSOIS: { id: "3rosas_3girassois",  nome: "Buquê de Rosas e Girassóis",                 preco: "R$110,00", imagem: getProductImage("3rosas_3girassois") },
   BUQUE_2ROSAS_MIX_P:      { id: "2rosas_mix_P",       nome: "Buquê Mix de Flores e Duas Rosas - TAM: P",  preco: "R$75,00", imagem: getProductImage("2rosas_mix_P") },
   BUQUE_7ROSAS_5GIRASSOIS: { id: "7rosas_5girasois",   nome: "Buquê de Rosas e Girassóis",                 preco: "R$180,00", imagem: getProductImage("7rosas_5girasois") },
