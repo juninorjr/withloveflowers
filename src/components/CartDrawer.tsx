@@ -129,7 +129,7 @@ const CartDrawer = () => {
                     </h4>
                     {formatComposition(item.composition) && (
                       <p className="font-body text-xs mt-0.5" style={{ color: "#6b3a6b" }}>
-                        Composição: {formatComposition(item.composition)}
+                        Adicional: {formatComposition(item.composition)}
                       </p>
                     )}
                     <p className="font-body text-sm font-bold mt-1" style={{ color: "#a04ba0" }}>
