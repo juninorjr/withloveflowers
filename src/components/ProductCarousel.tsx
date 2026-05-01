@@ -103,6 +103,12 @@ const ProductCarousel = ({ products, customizable = false }: ProductCarouselProp
           />
         ))}
       </div>
+
+      <CustomizeBouquetModal
+        product={customizingProduct}
+        open={!!customizingProduct}
+        onOpenChange={(open) => !open && setCustomizingProduct(null)}
+      />
     </div>
   );
 };
