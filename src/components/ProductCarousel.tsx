@@ -1,16 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
+import { ChevronLeft, ChevronRight, ShoppingCart, Sparkles } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Product, parsePrice } from "@/data/products";
 import SmartImage from "@/components/SmartImage";
+import CustomizeBouquetModal from "@/components/CustomizeBouquetModal";
 
 interface ProductCarouselProps {
   products: Product[];
+  customizable?: boolean;
 }
 
-const ProductCarousel = ({ products }: ProductCarouselProps) => {
+const ProductCarousel = ({ products, customizable = false }: ProductCarouselProps) => {
   const { addItem } = useCart();
+  const [customizingProduct, setCustomizingProduct] = useState<Product | null>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
