@@ -40,8 +40,20 @@ const CartDrawer = () => {
   const deliveryFee = selectedDelivery?.fee ?? 0;
   const grandTotal = totalPrice + deliveryFee;
 
+  const formatComposition = (c?: { rosas: number; girassois: number }) => {
+    if (!c || (c.rosas === 0 && c.girassois === 0)) return null;
+    const parts: string[] = [];
+    if (c.rosas > 0) parts.push(`${c.rosas} rosa${c.rosas > 1 ? "s" : ""}`);
+    if (c.girassois > 0) parts.push(`${c.girassois} girassol${c.girassois > 1 ? "es" : ""}`);
+    return parts.join(" e ");
+  };
+
   const getFinalizeLink = () => {
-    const lines = items.map((i) => `${i.name} x${i.quantity} — ${i.priceLabel}`);
+    const lines = items.map((i) => {
+      const comp = formatComposition(i.composition);
+      const compStr = comp ? ` — ${comp}` : "";
+      return `${i.name}${compStr} x${i.quantity} — ${i.priceLabel}`;
+    });
     const deliveryLabel = selectedDelivery
       ? `${selectedDelivery.label}${selectedDelivery.fee > 0 ? ` — ${formatBRL(selectedDelivery.fee)}` : ""}`
       : "(não informado)";
@@ -115,6 +127,11 @@ const CartDrawer = () => {
                     <h4 className="font-display text-sm font-semibold text-foreground leading-snug line-clamp-2">
                       {item.name}
                     </h4>
+                    {formatComposition(item.composition) && (
+                      <p className="font-body text-xs mt-0.5" style={{ color: "#6b3a6b" }}>
+                        Composição: {formatComposition(item.composition)}
+                      </p>
+                    )}
                     <p className="font-body text-sm font-bold mt-1" style={{ color: "#a04ba0" }}>
                       {item.priceLabel}
                     </p>
