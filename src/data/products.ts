@@ -87,8 +87,8 @@ export const PRODUCTS = {
   DIV_LIRIO_PINK_MIX_P:       { id: "lirio_pink_mix_p",       nome: "Buquê Mix de Flores - TAM: P",                    preco: "R$75,00", imagem: getProductImage("lirio_pink_mix_p") },
   DIV_MIX_M:                  { id: "mix_m",                  nome: "Buquê Mix de Flores - TAM: M",                    preco: "R$145,00", imagem: getProductImage("mix_m") },
   DIV_3LIRIOS_MIX_G:          { id: "3lirios_mix_g",          nome: "Buquê Mix de Flores com 3 Lírios - TAM: G",       preco: "R$295,00", imagem: getProductImage("3lirios_mix_g") },
-  DIV_LIRIO_VERMELHO_MIX_P:   { id: "lirio_vermelho_mix_p",   nome: "Buquê Mix de Flores com Lírios Vermelhos - TAM: P", preco: "R$140,00", imagem: getProductImage("lirio_vermelho_mix_p") },
-  DIV_LIRIO_BRANCO_MIX_M:     { id: "lirio_branco_mix_m",     nome: "Buquê Mix de Flores com Lírios Brancos - TAM: M", preco: "R$140,00", imagem: getProductImage("lirio_branco_mix_m") },
+  DIV_LIRIO_VERMELHO_MIX_P:   { id: "lirio_vermelho_mix_p",   nome: "Buquê Mix de Flores com Lírios Vermelhos - TAM: P", preco: "R$75,00", imagem: getProductImage("lirio_vermelho_mix_p") },
+  DIV_LIRIO_BRANCO_MIX_M:     { id: "lirio_branco_mix_m",     nome: "Buquê Mix de Flores com Lírios Brancos - TAM: M", preco: "R$75,00", imagem: getProductImage("lirio_branco_mix_m") },
 
   // Presentes (Index)
   PRES_LUMINARIA_VERMELHA: { id: "pre-001", nome: "Luminária da Paixão Vermelha",                              preco: "R$ 95,00",  imagem: produto11 },
