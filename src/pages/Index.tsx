@@ -7,6 +7,13 @@ import { PRODUCTS, Product, parsePrice } from "@/data/products";
 import HeroSlider from "@/components/HeroSlider";
 import SmartImage from "@/components/SmartImage";
 
+// ── Textos das seções (edite aqui para trocar campanhas/datas) ──────────────
+const DESTAQUES_TITLE = "Buquês em Destaque 💐";
+const DESTAQUES_SUBTITLE = "Surpreenda com buquês de rosas quem você mais ama. Escolha o tamanho ideal!";
+const PRESENTES_TITLE = "Presentes Inesquecíveis ✨";
+const PRESENTES_SUBTITLE = "Surpreenda quem você ama com presentes únicos e cheios de carinho.";
+// ─────────────────────────────────────────────────────────────────────────────
+
 const Index = () => {
   return (
     <main>
@@ -15,7 +22,7 @@ const Index = () => {
 
       {/* Categories & Welcome */}
       <section className="py-10 md:py-12 bg-purple-light">
-        <div className="container mx-auto px-4 max-w-4xl text-right">
+        <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="font-display text-xl md:text-2xl font-semibold text-center text-foreground mb-6">
             O que você procura hoje?
           </h2>
@@ -41,12 +48,11 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Dia da Mulher Carousel */}
-      <PromoCarousel />
+      {/* Buquês em Destaque */}
+      <DestaquesCarousel />
 
-      {/* Nossas Rosas Carousel */}
-      <RosasCarousel />
-
+      {/* Presentes */}
+      <PresentesCarousel />
 
       {/* Why Buy From Us */}
       <section className="bg-secondary py-[40px]">
@@ -85,7 +91,7 @@ const Index = () => {
   );
 };
 
-const promoProducts: Product[] = [
+const destaquesProducts: Product[] = [
   PRODUCTS.BUQUE_7ROSAS_5GIRASSOIS,
   PRODUCTS.BUQUE_PINK_MIX_MINI,
   PRODUCTS.DIV_LIRIO_ROSA_MIX_M,
@@ -93,7 +99,15 @@ const promoProducts: Product[] = [
   PRODUCTS.DIV_MIX_GIRASSOL_GERBERA,
 ];
 
-const PromoCarousel = () => {
+const presentesProducts: Product[] = [
+  PRODUCTS.PRES_LUMINARIA_VERMELHA,
+  PRODUCTS.PRES_LUMINARIA_BRANCA,
+  PRODUCTS.PRES_CORACAO_FERRERO,
+  PRODUCTS.PRES_BOX_BRANCA,
+  PRODUCTS.PRES_BOX_BLACK,
+];
+
+const DestaquesCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
@@ -108,10 +122,10 @@ const PromoCarousel = () => {
     <section className="bg-rose-light py-[40px]">
       <div className="px-4 md:container md:mx-auto">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-          Dia dos namorados 🌸
+          {DESTAQUES_TITLE}
         </h2>
         <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
-          Surpreenda com buquês de rosas quem você mais ama. Escolha o tamanho ideal!
+          {DESTAQUES_SUBTITLE}
         </p>
       </div>
 
@@ -133,7 +147,7 @@ const PromoCarousel = () => {
 
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex items-stretch">
-            {promoProducts.map((item) => (
+            {destaquesProducts.map((item) => (
               <div key={item.id} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
                 <CarouselCard product={item} priority />
               </div>
@@ -149,15 +163,7 @@ const PromoCarousel = () => {
   );
 };
 
-const presentesProducts: Product[] = [
-  PRODUCTS.PRES_LUMINARIA_VERMELHA,
-  PRODUCTS.PRES_LUMINARIA_BRANCA,
-  PRODUCTS.PRES_CORACAO_FERRERO,
-  PRODUCTS.PRES_BOX_BRANCA,
-  PRODUCTS.PRES_BOX_BLACK,
-];
-
-const RosasCarousel = () => {
+const PresentesCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
@@ -172,10 +178,10 @@ const RosasCarousel = () => {
     <section id="presentes" className="py-[40px] bg-purple-light scroll-mt-24">
       <div className="px-4 md:container md:mx-auto">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-          Presentes Inesquecíveis ✨
+          {PRESENTES_TITLE}
         </h2>
         <p className="text-center text-muted-foreground font-body mb-10 max-w-lg mx-auto">
-          Surpreenda quem você ama com presentes únicos e cheios de carinho.
+          {PRESENTES_SUBTITLE}
         </p>
       </div>
 
@@ -199,7 +205,7 @@ const RosasCarousel = () => {
           <div className="flex items-stretch">
             {presentesProducts.map((item) => (
               <div key={item.id} className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_55%] md:flex-[0_0_33.333%] px-2 h-auto">
-                <CarouselCard product={item} soldOut />
+                <CarouselCard product={item} />
               </div>
             ))}
           </div>
@@ -209,8 +215,12 @@ const RosasCarousel = () => {
   );
 };
 
-const CarouselCard = ({ product, soldOut = false, priority = false }: { product: Product; soldOut?: boolean; priority?: boolean }) => {
+const CarouselCard = ({ product, priority = false }: { product: Product; priority?: boolean }) => {
   const { addItem } = useCart();
+  // Disponibilidade agora vem do próprio produto (products.ts),
+  // em vez de ficar fixa no componente.
+  const soldOut = !product.disponivel;
+
   return (
     <div className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col" style={{ backgroundColor: "#F8F0FF" }}>
       <div className="aspect-[4/5] w-full overflow-hidden relative">
