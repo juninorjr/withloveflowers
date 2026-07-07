@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import { toast } from "sonner";
 
 export interface CartComposition {
   rosas: number;
@@ -36,15 +37,6 @@ export const useCart = () => {
   return ctx;
 };
 
-function parsePrice(label: string): number {
-  const match = label.replace(/[^\d,.]/g, "").replace(",", ".");
-  return parseFloat(match) || 0;
-}
-
-export function cartItemId(name: string) {
-  return name.toLowerCase().replace(/\s+/g, "-");
-}
-
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -61,6 +53,17 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
     setLastAddedAt(Date.now());
     setLastAddedName(item.name);
+
+    // Confirmação visível de que o item entrou no carrinho,
+    // com atalho para abrir o carrinho direto da notificação.
+    toast.success("Adicionado ao carrinho! 🌸", {
+      description: item.name,
+      duration: 3000,
+      action: {
+        label: "Ver carrinho",
+        onClick: () => setIsOpen(true),
+      },
+    });
   }, []);
 
   const removeItem = useCallback((id: string) => {
