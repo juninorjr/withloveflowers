@@ -32,8 +32,14 @@ const CartDrawer = () => {
   const [deliveryMode, setDeliveryMode] = useState<DeliveryOptionId | "">("");
   const [showInfoPopup, setShowInfoPopup] = useState(false);
 
+  // Mostra o aviso apenas na PRIMEIRA vez que o carrinho é aberto na visita.
+  // sessionStorage zera quando o cliente fecha a aba, então numa próxima
+  // visita ele verá o aviso novamente (uma vez).
   useEffect(() => {
-    if (isOpen) setShowInfoPopup(true);
+    if (isOpen && !sessionStorage.getItem("wlf_info_seen")) {
+      setShowInfoPopup(true);
+      sessionStorage.setItem("wlf_info_seen", "1");
+    }
   }, [isOpen]);
 
   const selectedDelivery = DELIVERY_OPTIONS.find((o) => o.id === deliveryMode);
