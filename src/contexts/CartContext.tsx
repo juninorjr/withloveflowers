@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
 import { toast } from "sonner";
 
 export interface CartComposition {
@@ -37,11 +37,41 @@ export const useCart = () => {
   return ctx;
 };
 
+// Chave do carrinho salvo no navegador do cliente.
+// Se um dia a estrutura do CartItem mudar, troque para "wlf_cart_v2"
+// para descartar carrinhos salvos no formato antigo.
+const STORAGE_KEY = "wlf_cart_v1";
+
+function loadSavedCart(): CartItem[] {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return [];
+    const parsed = JSON.parse(saved);
+    if (!Array.isArray(parsed)) return [];
+    // Sanidade básica: só aceita itens com os campos essenciais
+    return parsed.filter(
+      (i) => i && typeof i.id === "string" && typeof i.price === "number" && typeof i.quantity === "number" && i.quantity > 0
+    );
+  } catch {
+    return [];
+  }
+}
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  // Carrinho persiste entre visitas: se o cliente recarregar a página
+  // ou fechar a aba, os itens continuam aqui quando ele voltar.
+  const [items, setItems] = useState<CartItem[]>(loadSavedCart);
   const [isOpen, setIsOpen] = useState(false);
   const [lastAddedAt, setLastAddedAt] = useState(0);
   const [lastAddedName, setLastAddedName] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    } catch {
+      // localStorage indisponível (modo privado antigo etc.) — segue sem persistir
+    }
+  }, [items]);
 
   const addItem = useCallback((item: Omit<CartItem, "quantity">) => {
     setItems((prev) => {
